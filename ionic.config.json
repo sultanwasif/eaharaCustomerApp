@@ -1,0 +1,7 @@
+{
+  "name": "hfsApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
