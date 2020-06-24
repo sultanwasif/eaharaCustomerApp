@@ -2,8 +2,25 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
+// export const env = {
+//   production: false,
+//   API: "http://localhost:4000",
+//   WSAPI: "ws://localhost:4000",
+//   WSSAPI: "wss://localhost:4000",
+//   APP_UPDATE_URL:
+//     "",
+//   APPVER: "1.0.7",
+//   NAME: "HF DEV"
+// };
+
+export const env = {
+  production: true,
+  API: "http://eahara.ainsoftsolutions.com/",
+  WSAPI: "ws://eahara.ainsoftsolutions.com/",
+  WSSAPI: "wss://eahara.ainsoftsolutions.com/",
+  APP_UPDATE_URL:"https://eahara.ainsoftsolutions.com/resources/appUpdates/my_app_update.xml",
+  APPVER: "Ver: 1.0.1",
+  NAME: "Developed by HF Services"
 };
 
 /*

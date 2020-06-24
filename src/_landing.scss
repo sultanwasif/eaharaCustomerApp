@@ -1,0 +1,482 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900');
+
+body,html{
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+} 
+*{ font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; } 
+ 
+header { height: 70px; background-color: #FFFFFF; box-shadow: 0px 1px 3px rgba(0,0,0,.1); }
+footer { height: 50px; background-color: #bbbdc6;}
+
+img.logo-img {
+  max-height: 45px;
+}
+.app-icons {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 20px;
+}
+.head-icons {
+  text-align: right;
+}
+
+.avatar {
+  position: relative;
+  display: inline-block;
+}
+.avatar>img, .img-avatar, .img-circle {
+	max-width: 100%;
+    height: 35px;
+    width: 35px;
+    border-radius: 50em;
+}
+.avatar-md>img, .avatar-md .img-avatar, .avatar-md .img-circle {
+    height: 55px;
+    width: 55px;
+}
+.avatar-lg>img, .avatar-lg .img-avatar, .avatar-lg .img-circle {
+    height: 120px;
+    width: 120px;
+}
+
+.app-search a { color: #a0a3b0; }
+.app-logout a { color: #E44141; }
+
+
+.busRoutes,.spProgrames {
+	color: #FFFFFF;
+    line-height: 1;
+	opacity: .8;
+}
+
+.busRoutes.active { background-color: #3d9ef7; opacity: 1; }
+.spProgrames.active,.footer-nav-tab.active { background-color: #3d9ef7; opacity: 1; }
+.main-content { 
+    padding: 1rem;
+    background-color: #fcfcfd;
+    height: calc(100vh - 120px);
+    overflow: auto;
+    margin: 70px 0px 0px;
+}
+
+/*list*/
+.busroute {
+	margin: 0 -.25rem 10px;
+}
+.busroute-item {
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #edeff4;
+  min-width: 190px;
+  cursor: default;
+}
+.b-no {
+	color: #3d9ef7;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: .75rem;
+	line-height: 1;
+    width: 65px;
+    font-weight: 500;
+    text-align: center;
+}
+.b-devider { width:2px; text-align: center; }
+.b-label {
+	color: #7a7c86;
+    font-size: .75rem;
+	padding-left: 7px;
+	font-weight: 500;
+}
+.b-label b {
+  color: #646b75;
+}
+.b-arrow {
+	color: #000000;
+	opacity: .2;
+	font-size: 1.2rem;
+	width: 15px;
+}
+
+.pm-busroutes .b-no {
+  color: #f7b036;
+}
+
+.busroute-item:hover,.busroute-item.active {
+	background: #3d9ef7;
+}
+.pm-busroutes .busroute-item:hover, .pm-busroutes .busroute-item.active {
+	background: #f7b036;
+}
+.busroute-item:hover .b-no,
+.busroute-item:hover .b-label,
+.busroute-item:hover .b-label b,
+.busroute-item:hover .b-arrow
+{
+	color: #FFFFFF;
+	opacity: 1;
+}
+
+.st-list-item:hover,.st-list-item.active {
+	background: #FFF;
+}
+
+.label-primary { color: #0c6ac7; }
+.text-grey { color: #646b75; }
+.font-xs { font-size: 11px; }
+.font-sm { font-size: 12px; }
+.font-md { font-size: 14px; }
+.font-lg { font-size: 1.6rem; }
+.panel-title { line-height: 1; color: #646b75; font-size: 16px; font-weight: bold;}
+
+.header-title { border-bottom: 1px solid #ededef; margin-top: -10px; margin-left: -15px; margin-right: -15px; margin-bottom: 0px; padding: 0px; }
+.st-title { font-size: 16px; margin: 0; }
+.st-desc { font-size: 12px; line-height: 1.1; }
+
+.cursor {
+  cursor: pointer;
+}
+
+/*Student modal*/
+.st-details-modal {
+  height: 56px;
+  /*background: #454cc1 url("assets/Images/profile-bg.jpg");*/
+	    background: #3d82e6;
+	border: 0;
+}
+.close {
+  text-shadow: 0 0 0 transparent;
+  z-index: 2;
+}
+.st-details-modal .close {color: #FFFFFF;}
+.st-profile-modal .modal-header { overflow: hidden; border-radius: 0;  }
+.st-m-pic {
+  position: relative;
+  margin-top: -10px;
+  text-align: left;
+  z-index: 0;
+	width: 100%;
+}
+.pic-round {
+	 /*box-shadow: 0 0 5px rgba(0,0,0,.1);*/
+	border: 2px solid #FFFFFF;
+}
+
+/*SP css*/
+.sp-list-item { position: relative; padding: .8rem; }
+.sp-list-item .b-arrow{ position: absolute; right: 16px; top: 50%; margin-top: -15px; font-size: 24px; }
+.sp-list-item:hover *{ color: #FFFFFF !important; }
+.sp-icon-list { color: #0c6ac7; text-align: center; width:68px; }
+.sp-icon-label { font-size: 11px; font-weight: 500; }
+.title-sp {
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+.modal-students-list {
+  background-color: #fcfcfd;
+}
+.modal-students-list {
+	background-color: #fcfcfd;
+}
+.modal-students-list .busroute-item{
+	width:48%;
+}
+.sp-details-modal-header {
+    box-shadow: 0 0px 3px rgba(0,0,0,.1);
+    z-index: 1;
+}
+.modal-students-list {
+  max-height: 430px;
+  overflow: auto;
+}
+
+.log-enter i, .log-exit i {font-size: 18px; transform: rotate(180deg); display: inline-block; }
+.log-exit i { transform: rotate(180deg); margin-left: 2px; }
+.st-log-access {
+    position: relative;
+    line-height: 1;
+	padding-bottom: 1px;
+}
+
+.busroute_list .busroute-item {
+    max-width: calc(25% - .50rem);
+	width: calc(25% - .50rem);
+}
+
+.busroute_innerlist .busroute-item {
+    max-width: calc(50% - .50rem);
+	width: calc(50% - .50rem);
+	position: relative;
+}
+
+/*Placeholder animation*/
+
+.placeload {
+  background: #fff;
+  width: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.placeload .header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.placeload .header .img {
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.placeload .header .header-content {
+  margin-left: 20px;
+  width: 100%;
+}
+.placeload .header .header-content .content-shape {
+  height: 3px;
+  margin-bottom: 9px;
+}
+.placeload .header .header-content .content-shape:first-child {
+  width: 90%;
+  height: 7px;
+}
+.placeload .header .header-content .content-shape:nth-child(2) {
+  width: 70%;
+}
+.placeload .header .header-content .content-shape:nth-child(3) {
+  width: 40%;
+  margin-bottom: 0;
+}
+.placeload .image-placeholder {
+  width: 100%;
+  margin-top: 20px;
+  height: 250px;
+}
+.placeload .placeholder-footer {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.placeload .placeholder-footer .footer-block {
+  width: 100%;
+  height: 100%;
+  min-height: 20px;
+}
+.placeload .placeholder-footer .footer-block .content-shape {
+  height: 8px;
+  margin-bottom: 8px;
+}
+.placeload .placeholder-footer .footer-block .content-shape:first-child {
+  width: 32%;
+}
+.placeload .placeholder-footer .footer-block .content-shape:nth-child(2) {
+  width: 24%;
+}
+
+.loads {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: placeload;
+  animation-name: placeload;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: #eeeeee;
+  background: -webkit-gradient(linear, left top, right top, color-stop(8%, #eeeeee), color-stop(18%, #dddddd), color-stop(33%, #eeeeee));
+  background: -webkit-linear-gradient(left, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  -webkit-background-size: 800px 104px;
+  background-size: 1200px 104px;
+  position: relative;
+}
+
+@-webkit-keyframes placeload {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+@keyframes placeload {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+/**/
+ .busroute_innerlist .busroute-item {
+    min-height: 75px;
+}
+.busroute_list .placeload {
+  padding: 0;
+}
+
+.busroute_list .placeload .header .img {
+  border-radius: 15%;
+  width: 45px;
+  min-width: 45px;
+  height: 45px;
+}
+.bg-container {
+  background-color: #e5ecf1;
+  height: calc(100vh - 101px);
+  display: table;
+  width: 100%;
+}
+/*.t-header{
+    height: 56px;
+}*/
+.t-footer {
+  height: 45px;
+}
+
+.t-footer .ion-selectable {
+  max-width: 50%;
+}
+.t-footer .ion-selectable {
+  max-width: 50%;
+  font-size: 0.9rem;
+  background-color: #bbbdc6;
+  color: #fff;
+}
+.t-footer .ion-selectable a:hover {
+  color: #fff !important;
+}
+.t-footer .tab-selected {
+  background-color: #3d9ef7;
+}
+
+.popover-content.sc-ion-popover-md {
+  width: 100% !important;
+ /* height: 70% !important;
+    top: 40px !important;*/
+
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background-color: transparent;
+  border-radius: 6px;	
+}
+
+.app-search a {
+    font-size: 24px;
+    line-height: 1;
+    position: relative;
+    top: 2px;
+}
+.app-logout a {
+    font-size: 24px;
+    line-height: 0;
+	padding-right: 0;
+}
+
+.busroute_innerlist .busroute-item {
+    min-height: 70px;
+    border: 2px solid transparent;
+}
+.busroute_innerlist .item_inner_active {
+    border: 2px solid #3d9ef7;
+    background-color: #e4eeff;
+}
+ion-toolbar .head-icons {
+    text-align: right;
+    padding-right: 15px;
+}
+.modal-content{
+	border: 0;
+	border-radius: 0;
+    height: 100%;
+}
+ .warning-center {
+  text-align: center;
+}
+
+.popover-content.sc-ion-popover-md{
+	max-width:500px !important;
+	background-color: #fff;
+}
+
+
+
+/*new changes*/
+.busroute_innerlist ion-checkbox {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.busroute_innerlist .st-log-access {
+    position: absolute;
+    line-height: 1;
+    padding-bottom: 1px;
+    right: 0;
+    top: 0;
+    background-color: #fff;
+    padding: 2px 10px;
+    border-radius: 15px;
+}
+.title-subtitle {
+    position: relative;
+    padding-bottom: 3px;
+}
+.selectall-badge {
+    padding: 6px 15px;
+    position: absolute;
+    right: 0;
+    top: -4px;
+    border-radius: 45px;
+}
+.loginform ion-icon.md.hydrated {
+    position: absolute;
+    right: 10px;
+    top: 16px;
+    color: #878d96;
+}
+
+.login-view{
+	border-radius: 10px;
+}
+.exceptModal .st-details-modal{
+	 min-height: 30px;
+	border: 0;
+}
+.st-details-modal h3{
+  margin: 0px 0;
+}
+
+.exceptModal .modal-body{
+    height: 70vh;
+    overflow: auto;
+	background-color: #e5ecf1;
+    padding: 5px 10px;
+}
+.popover-content.sc-ion-popover-md {
+    border-radius: 10px;
+}
+/**/
+.table td, .table th {
+    padding: .5rem .75rem;
+}
+.popover-viewport.sc-ion-popover-md {
+    height: 100%;
+}
+h5 {
+    font-size: 1.1rem;
+}
+

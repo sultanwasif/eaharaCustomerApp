@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Tab 1
@@ -14,4 +14,111 @@
   </ion-header>
 
   <app-explore-container name="Tab 1 page"></app-explore-container>
+</ion-content> -->
+<!-- <ion-row>
+  <ion-avatar *ngFor="let offer of offers">
+    <img src="{{basePath}}{{ offer.Image }}" style="max-width:2.5rem;max-height:2.5rem;">
+  </ion-avatar>
+  <h1> {{ offers.length }} </h1>
+</ion-row> -->
+<ion-header class="t-header">
+  <ion-toolbar>
+    <div class="app-container d-table w-100 h-100">
+      <div class="brand-logo d-table-cell align-middle pl-3">
+        <img src="assets/Images/logo.png" alt="ST Logo" class="logo-img" />
+      </div>
+      <div class="head-icons d-table-cell align-middle">
+        <div class="app-icons app-logout">
+          <a class="nav-link" href="#">
+            <ion-icon name="notifications-outline"></ion-icon>
+          </a>
+        </div>
+        <div class="app-icons app-logout">
+          <a class="nav-link" href="#">
+            <ion-icon name="cart-outline"></ion-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ng-container class="offerbg">  
+<ion-content>
+<div class="offerhome" >
+<ion-slides autoplay="3000" [options]="{pagination: true}">
+  <ion-slide>
+     <ion-row>
+            <ion-col *ngFor=" let item of offers | slice:0:3; let i=index " col-3 style="padding: 3px;">
+                <ion-card style="margin: 0px 0px 0px 0px;    width: calc(100%);">
+                    <img src="{{basePath}}{{item.Image}}"  />
+                </ion-card>
+            </ion-col>
+        </ion-row>
+  </ion-slide>
+  <ion-slide>
+     <ion-row>
+            <ion-col *ngFor=" let item of offers| slice:3:6; let i=index " col-3 style="padding: 3px;">
+                <ion-card style="margin: 0px 0px 0px 0px;    width: calc(100%);">
+                  <img src="{{basePath}}{{item.Image}}"  />
+                </ion-card>
+            </ion-col>
+        </ion-row>
+  </ion-slide>
+  <ion-slide>
+     <ion-row>
+            <ion-col *ngFor=" let item of offers| slice:6:9; let i=index " col-3 style="padding: 3px;">
+                <ion-card style="margin: 0px 0px 0px 0px;    width: calc(100%);">
+                  <img src="{{basePath}}{{item.Image}}"  />
+                </ion-card>
+            </ion-col>
+        </ion-row>
+  </ion-slide>
+</ion-slides>
+</div>
+<div class="app-container p-1 bg-container">
+<!-- <ion-list>
+<ion-item *ngFor="let item of shops" class="p-2 m-1 flex-fill busroute-item">
+  <ion-thumbnail slot="start">
+    <img src="{{basePath}}{{item.Image}}" class="thumbnailImg"/>
+  </ion-thumbnail>
+  <ion-label>{{item.Name}}</ion-label>
+</ion-item>
+</ion-list> -->
+<div
+            class="p-2 m-1 flex-fill busroute-item"
+            *ngFor="let item of shops"
+          >
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr (click)="onShopClick(item)">
+                  <td valign="middle" class="b-no">
+                    <!-- <ion-thumbnail> -->
+                    <img src="{{basePath}}{{item.Image}}" class="thumbnailImg"/>
+                  <!-- </ion-thumbnail> -->
+                  <div>
+                  <span style="color:red;" *ngIf="item.StartTime > CurrentTime || item.EndTime < CurrentTime">Closed</span>
+                  <span style="color:green;" *ngIf="item.StartTime < CurrentTime && item.EndTime > CurrentTime">Open Now</span>
+                </div>
+                  </td>
+                  <td valign="middle" class="b-devider">
+                    <img src="assets/Images/devider.png" alt="" />
+                  </td>
+                  <td valign="middle" class="b-label">
+                    <div>
+                      <b>{{ item.Name }}</b>
+                    </div>
+                    <div class="">
+                      {{ item.TagLine }} <br>
+                        Min Order : {{item.AverageCost}} RS
+                    </div>
+                  </td>
+                  <td valign="middle" class="b-arrow">
+                    <ion-icon src="assets/Images/arrow-forward.svg"></ion-icon>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+</div>
 </ion-content>
+</ng-container>

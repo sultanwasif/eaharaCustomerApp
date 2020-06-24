@@ -1,0 +1,250 @@
+ion-content ion-toolbar {
+    --background: translucent;
+  }
+  .thumbnailImg {
+    width: 65px;
+    height: 65px;
+    position: relative;
+    }
+  // .thumbnailImg {
+  //   height: 5em;
+  //   width: 5em;
+  //   }
+
+    .text-over-img {
+      color: #fff;
+      //font-size: 18px;
+      padding: 1px;
+      background-color: rgba(141, 15, 15, 0.6);
+      position: relative;
+      width: 100%;
+      margin: -34px 0px 0px 0px;
+      text-align: center;
+    }
+    
+    .offerbg {
+      background-color: #e5ecf1;
+  }
+    .offerhome {
+      overflow-x: scroll !important;
+      background-color: #e5ecf1;
+      padding-top: 5px;	
+  }
+  
+  .offerhome img {
+      height: 22vh;
+      width: 30vw;
+      border-radius: 10px;
+  }
+  .odd { background: green; }
+  
+  .even { background: red; }
+  
+  :root {
+    --ion-safe-area-top: 20px;
+    --ion-safe-area-bottom: 22px;
+  }
+  
+  .media-body ion-icon {
+      font-size: 18px;
+    }
+  
+   .ion-ripple {
+     position: relative;
+     overflow: hidden;
+   } 
+  
+   ion-title {
+     text-align: center;
+   }
+  
+   .pointer{
+     cursor: pointer;
+   }
+  
+   .pointer:hover {
+     background-color: blue;
+     color: #ffffff !important;
+   }
+  
+   .routeStart{
+     background-color: green;
+   }
+  
+   .routeComplete {
+     background-color: red;
+   }
+  
+   .addStudent{
+    position: fixed;
+    right: 15px;
+    bottom: 40px;
+    z-index: 999;
+  
+  }
+  
+   .addIncident{
+    position: fixed;
+    right: 15px;
+    bottom: 106px;
+    z-index: 999;
+  
+  }
+  
+  .fabButton{
+    display: flex;
+  }
+  
+   
+  
+  /*
+       CSS-Tricks Example
+       by Chris Coyier
+       http://css-tricks.com
+  */
+  #page-wrap {
+    width: 240px;
+     position: absolute;
+     bottom: 75px;
+     right:0;
+     left: 0;
+     margin: auto;	
+       
+   }
+   #well {
+     padding: 0px 20px;
+     -webkit-border-radius: 30px;
+     -moz-border-radius: 30px;
+     border-radius: 30px;
+     background: rgb(31, 159, 89);
+     background: linear-gradient(90deg, rgba(31, 159, 89, 1) 0%, rgba(18, 187, 95, 1) 35%, rgba(4, 195, 90, 1) 100%);
+     border: 2px solid #31b46c;
+     overflow: hidden;
+     -webkit-user-select: none;
+     box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.17);
+     height: 44px;
+     line-height: 44px;
+     position: relative;
+   }
+   .slidebar {
+     background: -moz-linear-gradient(left, #454545, 0.4, #454545, 0.5, white, 0.6, #454545, #454545);
+     background: -webkit-gradient(linear, left top, right top, color-stop(0, #438859), color-stop(0.4, #438859), color-stop(0.9, white), color-stop(0.6, #438859), color-stop(1, #438859));
+     -moz-background-clip: text;
+     -webkit-background-clip: text;
+     -moz-text-fill-color: transparent;
+     -webkit-text-fill-color: transparent;
+     -webkit-animation: slidetounlock 15s infinite;
+     font-size: 1.3rem;
+     font-family: Helvetica, Arial, sans-serif;
+     padding: 0;
+     -webkit-text-size-adjust: none;
+     color: #FFFFFF;
+     text-align: center;
+     font-weight: bold;
+     text-transform: uppercase;
+   }
+   #slider {
+         background: url("../../assets/Images/right-arrow-circular-button.svg") no-repeat;
+       background-size: 100%;
+       width: 40px;
+       height: 40px;
+       display: inline-block;
+       vertical-align: middle;
+       line-height: 1;
+       position: absolute !important;
+       left: 0;
+       top: 0;
+       box-shadow: 5px 1px 15px rgba(0,0,0,.2);
+       border-radius: 100%;
+   }
+   @-webkit-keyframes slidetounlock {
+     0% {
+       background-position: -700px 0;
+     }
+     100% {
+       background-position: 700px 0;
+     }
+   }
+  
+  
+  
+   .activated {
+    --ion-item-background: grey;
+  }
+  
+  .green {
+    color: rgb(12,136,42);
+    font-weight:600;
+  }
+  
+  .red {
+    color: rgb(200,38,19);
+    font-weight: 600;
+  }
+  
+  ion-fab-list {
+    margin: 66px 0;
+    position: absolute;
+    bottom: 0px;
+    overflow: visible;
+    // display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    align-items: center;
+    min-width: 56px;
+    min-height: 56px;
+  }
+  
+  .fab-list-active {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .fab-button-in-list {
+    margin: 8px 0;
+    width: 50px;
+    height: 50px;
+    overflow: visible;
+    ion-icon {
+      font-size: 24px;
+    }
+
+    // .item-md ion-thumbnail img {
+    //   height: 5em;
+    //   width: 5em;
+    // }
+  //   ion-label {
+  //     position: absolute;
+  //     top: -8px;
+  //     right: 40px;
+  
+  //     color: white;
+  //     background-color: rgba(0,0,0,0.7);
+  //     line-height: 24px;
+  //     padding: 4px 8px;
+  //     border-radius: 4px;
+  // }
+  
+      
+  }
+    // .header-banner{
+          
+      // 	height:200px;
+      // 	min-height:200px;
+      // 	background:red;
+      // }
+  
+      // .slide-zoom {
+      // 	// height:200px;
+      // 	height: 100%;
+      // 	// overflow:hidden;
+      // }
+  
+    //      ion-slides {
+    //         height: 200px;
+    //      }

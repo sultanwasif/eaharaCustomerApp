@@ -1,0 +1,47 @@
+<ng-container class="offerbg">  
+<ion-content>
+<div class="app-container p-1 bg-container">
+  <!-- <ion-list>
+  <ion-item *ngFor="let item of shops" class="p-2 m-1 flex-fill busroute-item">
+    <ion-thumbnail slot="start">
+      <img src="{{basePath}}{{item.Image}}" class="thumbnailImg"/>
+    </ion-thumbnail>
+    <ion-label>{{item.Name}}</ion-label>
+  </ion-item>
+  </ion-list> -->
+      <ng-container *ngFor="let Cat of allItems | orderBy:['Priority']">
+          <div
+              class="p-2 m-1 flex-fill busroute-item"
+              *ngFor="let item of Cat.Items"
+            >
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr >
+                    <td valign="middle" class="b-no">
+                      <!-- <ion-thumbnail> -->
+                      <img src="{{basePath}}{{item.Image}}" class="thumbnailImg"/>
+                      <!-- <img src="{{basePath}}{{item.Image}}"/> -->
+                    <!-- </ion-thumbnail> -->
+                    <div  class="text-over-img">
+                    <span *ngIf="item.InActive">Not Available</span>
+                   </div>
+                    </td>
+                    <td valign="middle" class="b-devider">
+                      <img src="assets/Images/devider.png" alt="" />
+                    </td>
+                    <td valign="middle" class="b-label">
+                      <div>
+                        <b>{{ item.Name }}</b>
+                      </div>
+                      <div class="">
+                        RS {{item.Price}} /-
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </ng-container> 
+  </div>
+  </ion-content>
+  </ng-container>

@@ -1,0 +1,301 @@
+// // @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300");
+// // @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900");
+// body,
+// html {
+//   margin: 0;
+//   padding: 0;
+//   font-family: "Montserrat", sans-serif;
+// }
+// * {
+//   font-family: "Montserrat", sans-serif;
+//   margin: 0;
+//   padding: 0;
+// }
+// header {
+//   height: 70px;
+//   background-color: #ffffff;
+//   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+// }
+// footer {
+//   height: 50px;
+//   background-color: #bbbdc6;
+// }
+// img {
+//   &.logo-img {
+//     max-height: 50px;
+//   }
+// }
+// .app-icons {
+//   display: inline-block;
+//   vertical-align: middle;
+//   font-size: 20px;
+// }
+// .head-icons {
+//   text-align: right;
+// }
+// .avatar {
+//   position: relative;
+//   display: inline-block;
+// }
+// .avatar > img,
+// .img-avatar,
+// .img-circle {
+//   max-width: 100%;
+//   height: 35px;
+//   width: 35px;
+//   border-radius: 50em;
+// }
+// .avatar-md > img,
+// .avatar-md .img-avatar,
+// .avatar-md .img-circle {
+//   height: 70px;
+//   width: 70px;
+// }
+// .avatar-lg > img,
+// .avatar-lg .img-avatar,
+// .avatar-lg .img-circle {
+//   height: 120px;
+//   width: 120px;
+// }
+// .app-search {
+//   a {
+//     color: #a0a3b0;
+//   }
+// }
+// .app-logout {
+//   a {
+//     color: #e44141;
+//   }
+// }
+// // .busRoutes,
+// // .spProgrames {
+// //   color: #ffffff;
+// //   line-height: 1;
+// //   opacity: 0.8;
+// // }
+// // .busRoutes {
+// //   &.active {
+// //     background-color: #3d9ef7;
+// //     opacity: 1;
+// //   }
+// // }
+// .spProgrames.active,
+// .footer-nav-tab.active {
+//   background-color: #3d9ef7;
+//   opacity: 1;
+// }
+// .main-content {
+//   padding: 1rem;
+//   background-color: #fcfcfd;
+//   height: calc(100vh - 120px);
+//   overflow: auto;
+//   margin: 70px 0px 0px;
+// }
+// .busroute {
+//   margin: 0 -0.3rem 15px;
+// }
+// .busroute-item {
+//   background: #fff;
+//   border-radius: 5px;
+//   border: 1px solid #edeff4;
+//   min-width: 190px;
+//   cursor: default;
+// }
+// .b-no {
+//   color: #3d9ef7;
+//   font-family: "Roboto Condensed", sans-serif;
+//   font-size: 2rem;
+//   line-height: 1;
+//   width: 45px;
+// }
+// .b-devider {
+//   width: 2px;
+//   text-align: center;
+// }
+// .b-label {
+//   color: #afb1bc;
+//   font-size: 0.75rem;
+//   padding-left: 7px;
+//   b {
+//     color: #646b75;
+//   }
+// }
+// .b-arrow {
+//   color: #000000;
+//   opacity: 0.2;
+//   font-size: 1.2rem;
+//   width: 15px;
+// }
+// .pm-busroutes {
+//   .b-no {
+//     color: #f7b036;
+//   }
+// }
+// .busroute-item:hover,
+// .busroute-item.active {
+//   background: #3d9ef7;
+// }
+// .pm-busroutes .busroute-item:hover,
+// .pm-busroutes .busroute-item.active {
+//   background: #f7b036;
+// }
+// // // // .busroute-item:hover .b-no,
+// // // // .busroute-item:hover .b-label,
+// // // // .busroute-item:hover .b-label b,
+// // // // .busroute-item:hover .b-arrow {
+// // // //   color: #ffffff;
+// // // //   opacity: 1;
+// // // // }
+// // // .st-list-item:hover,
+// // // .st-list-item.active {
+// // //   background: #fff;
+// // // }
+// // .label-primary {
+// //   color: #0c6ac7;
+// // }
+// .text-grey {
+//   color: #646b75;
+// }
+// .font-xs {
+//   font-size: 11px;
+// }
+// .font-sm {
+//   font-size: 12px;
+// }
+// .font-md {
+//   font-size: 14px;
+// }
+// .font-lg {
+//   font-size: 1.6rem;
+// }
+// // .panel-title {
+// //   line-height: 1;
+// //   color: #646b75;
+// //   font-size: 24px;
+// //   font-weight: 300;
+// // }
+// // .header-title {
+// //   border-bottom: 1px solid #ededef;
+// //   margin-top: -10px;
+// //   margin-left: -15px;
+// //   margin-right: -15px;
+// //   margin-bottom: 10px;
+// //   padding: 0 6px;
+// // }
+// // .st-title {
+// //   font-size: 16px;
+// // }
+// // .st-desc {
+// //   font-size: 12px;
+// // }
+// // .cursor {
+// //   cursor: pointer;
+// // }
+// .st-details-modal {
+//   min-height: 100px;
+//   background: #454cc1 url("assets/Images/profile-bg.jpg");
+//   .close {
+//     color: #ffffff;
+//   }
+// }
+// .close {
+//   text-shadow: 0 0 0 transparent;
+//   z-index: 2;
+// }
+// .st-profile-modal {
+//   .modal-header {
+//     overflow: hidden;
+//     border-radius: 0;
+//   }
+// }
+// .st-m-pic {
+//   position: relative;
+//   margin-top: -95px;
+//   text-align: center;
+//   z-index: 0;
+// }
+// .pic-round {
+//   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+//   border: 5px solid #ffffff;
+// }
+// // // .sp-list-item {
+// // //   position: relative;
+// // //   padding: 0.6rem;
+// // //   .b-arrow {
+// // //     position: absolute;
+// // //     right: 16px;
+// // //     top: 50%;
+// // //     margin-top: -15px;
+// // //     font-size: 24px;
+// // //   }
+// // //   &:hover {
+// // //     * {
+// // //       color: #ffffff !important;
+// // //     }
+// // //   }
+// // }
+// .sp-icon-list {
+//   color: #0c6ac7;
+//   text-align: center;
+//   width: 68px;
+// }
+// .sp-icon-label {
+//   font-size: 11px;
+//   font-weight: 500;
+// }
+// .title-sp {
+// 	font-size: 1.1rem;
+// 	line-height: 1.2;
+// }
+// .modal-students-list {
+//   background-color: #fcfcfd;
+//   background-color: #fcfcfd;
+//   max-height: 430px;
+//   overflow: auto;
+//   .busroute-item {
+//     width: 48%;
+//   }
+// }
+// .sp-details-modal-header {
+//   box-shadow: 0 0px 3px rgba(0, 0, 0, 0.1);
+//   z-index: 1;
+// }
+// .log-enter i,
+// .log-exit i {
+//   font-size: 18px;
+//   transform: rotate(180deg);
+//   display: inline-block;
+// }
+// .log-exit {
+//   i {
+//     transform: rotate(180deg);
+//     margin-left: 2px;
+//   }
+// }
+// .st-log-access {
+//   position: relative;
+//   line-height: 1;
+// }
+
+// .busroute_list .busroute-item {
+//   max-width: calc(25% - 0.5rem);
+//   width: calc(25% - 0.5rem);
+// }
+
+// .busroute_innerlist .busroute-item {
+//   max-width: calc(50% - 0.5rem);
+//   width: calc(50% - 0.5rem);
+// }
+
+
+//  Popup content styles
+
+// .popover-content.sc-ion-popover-md {
+//   width: 80% !important;
+//   height: 80% !important;
+//   // top: 40px !important;
+
+//   top: 50% !important;
+//   left: 50% !important;
+//   transform: translate(-50%, -50%) !important;
+// }

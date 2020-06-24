@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="464" viewBox="0 0 256 464">
+  <g id="handle" transform="translate(-104)">
+    <path id="Path_1" data-name="Path 1" d="M216,0h32V112H216Z" fill="#fdb62f"/>
+    <path id="Path_2" data-name="Path 2" d="M232,96A128,128,0,0,0,104,224v48H360V224A128,128,0,0,0,232,96Zm96,144H136V224a96,96,0,0,1,192,0Z" fill="#b3b3b3"/>
+    <path id="Path_3" data-name="Path 3" d="M184,224h0a16,16,0,0,1,16,16v40a16,16,0,0,1-16,16h0a16,16,0,0,1-16-16V240A16,16,0,0,1,184,224Z" fill="#eab34c"/>
+    <path id="Path_4" data-name="Path 4" d="M168,280V264l11.032-11.032a16.971,16.971,0,0,0-12-28.968h0a16.967,16.967,0,0,0-12,4.968l-9.656,9.656A32,32,0,0,0,136,261.256v37.488a32,32,0,0,0,9.376,22.624l37.256,37.256A32,32,0,0,1,192,381.256V464H296V272H200v8a16,16,0,0,1-32,0Z" fill="#ffcd6e"/>
+    <g id="Group_1" data-name="Group 1">
+      <path id="Path_5" data-name="Path 5" d="M216,224h0a16,16,0,0,1,16,16v64a16,16,0,0,1-16,16h0a16,16,0,0,1-16-16V240A16,16,0,0,1,216,224Z" fill="#eab34c"/>
+      <path id="Path_6" data-name="Path 6" d="M248,224h0a16,16,0,0,1,16,16v48a16,16,0,0,1-16,16h0a16,16,0,0,1-16-16V240A16,16,0,0,1,248,224Z" fill="#eab34c"/>
+      <path id="Path_7" data-name="Path 7" d="M280,224h0a16,16,0,0,1,16,16v16a16,16,0,0,1-16,16h0a16,16,0,0,1-16-16V240A16,16,0,0,1,280,224Z" fill="#eab34c"/>
+    </g>
+  </g>
+</svg>
