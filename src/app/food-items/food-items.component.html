@@ -1,16 +1,71 @@
+<ion-header class="t-header">
+  <ion-toolbar>
+    <div class="app-container d-table w-100 h-100">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <div class="head-icons d-table-cell align-middle">
+        <div class="app-icons app-logout">
+          <a class="nav-link" href="#">
+            <ion-icon name="notifications-outline"></ion-icon>
+          </a>
+        </div>
+        <div class="app-icons app-logout">
+          <a class="nav-link" href="#">
+            <ion-icon name="cart-outline"></ion-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
 <ng-container class="offerbg">  
 <ion-content>
 <div class="app-container p-1 bg-container">
-  <!-- <ion-list>
-  <ion-item *ngFor="let item of shops" class="p-2 m-1 flex-fill busroute-item">
-    <ion-thumbnail slot="start">
-      <img src="{{basePath}}{{item.Image}}" class="thumbnailImg"/>
-    </ion-thumbnail>
-    <ion-label>{{item.Name}}</ion-label>
-  </ion-item>
-  </ion-list> -->
-      <ng-container *ngFor="let Cat of allItems | orderBy:['Priority']">
-          <div
+  <ion-card>
+    <div class="row">
+      <div class="col">
+          <img class="w-100" style="border-radius:10px;" src="{{basePath}}{{getShop?.Image}}">
+          <span style="color:red;" *ngIf="getShop?.StartTime > CurrentTime || getShop?.EndTime < CurrentTime"><b>Closed</b></span>
+          <span style="color:green;" *ngIf="getShop?.StartTime < CurrentTime && getShop?.EndTime > CurrentTime"><b>Open Now</b></span>
+          <p class="mar-l1 mar-r1">Location : {{getShop?.Address}}</p>
+      </div>
+      <div class="col">
+          <h4>{{getShop?.Name}}</h4>
+          <p><b>{{getShop?.TagLine}}</b></p>
+          <button class="ratbutton"><ion-icon name="star"></ion-icon>{{getShop?.AverageRating}} / 5</button>
+          <!-- <button class="ratbutton"> <ion-icon ios="ios-star" md="md-star"></ion-icon> {{getShop?.AverageRating}} / 5</button> -->
+          <p>{{getShop?.ShopCategory.Name}}</p>
+      </div>
+  </div>
+        <div class="pad-2 center-text">
+          <font size="1" >
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Minimum Order Cost</td>
+                        <td>Delivery Charges</td>
+                        <td>Opening Hours</td>
+                        <td>Delivery Time</td>
+                    </tr>
+                    <tr>
+                        <td>{{getShop?.AverageCost}}</td>
+                        <td>{{getShop?.DeliveryCharge}}</td>
+                        <td>{{getShop?.OpeningHours}}</td>
+                        <td>{{getShop?.DeliveryTime}}</td>
+                    </tr>
+                </tbody>
+            </table>
+          </font>
+        </div>
+    </ion-card>
+  
+      <ng-container>
+        <ion-item-group *ngFor="let Cat of allItems | orderBy:['Priority']">
+          <ion-item-divider>
+            <ion-label><b>{{Cat?.Name}}</b></ion-label>
+          </ion-item-divider>
+            <div
               class="p-2 m-1 flex-fill busroute-item"
               *ngFor="let item of Cat.Items"
             >
@@ -22,7 +77,7 @@
                       <img src="{{basePath}}{{item.Image}}" class="thumbnailImg"/>
                       <!-- <img src="{{basePath}}{{item.Image}}"/> -->
                     <!-- </ion-thumbnail> -->
-                    <div  class="text-over-img">
+                    <div *ngIf="item.InActive" class="text-over-img">
                     <span *ngIf="item.InActive">Not Available</span>
                    </div>
                     </td>
@@ -37,10 +92,18 @@
                         RS {{item.Price}} /-
                       </div>
                     </td>
+                    <td valign="middle" class="b-arrow"  (click)="onAddClick(item)">
+                        <div class="app-logout">
+                          <a class="nav-link" href="#">
+                            <ion-icon name="add-circle"></ion-icon>
+                          </a>
+                        </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
-            </div>
+            </div>            
+        </ion-item-group>
           </ng-container> 
   </div>
   </ion-content>

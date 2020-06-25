@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
-import { Observable, of } from "rxjs";
-import { tap, delay } from "rxjs/operators";
+import { Observable, of } from 'rxjs';
+import { tap, delay } from 'rxjs/operators';
 
 export enum USER_ROLE {
-  SUPERADMIN = "SUPERADMIN",
-  SCHOOLADMIN = "SCHOOLADMIN",
-  TEACHER = "TEACHER",
-  PARENT = "PARENT",
-  GUEST = "GUEST"
+  SUPERADMIN = 'SUPERADMIN',
+  SCHOOLADMIN = 'SCHOOLADMIN',
+  TEACHER = 'TEACHER',
+  PARENT = 'PARENT',
+  GUEST = 'GUEST'
 }
 
 export interface UserInfo {
@@ -18,13 +18,15 @@ export interface UserInfo {
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AuthService {
   // isLoggedIn = false;
+  public tokenInfo;
   public user: UserInfo;
   public school: any;
   private isLoggedin: boolean;
+  public storage = window.localStorage;
 
   // store the URL so we can redirect after logging in
   redirectUrl: string;
@@ -37,4 +39,36 @@ export class AuthService {
     this.isLoggedin = false;
     this.user = null;
   }
+
+setCart(data) {
+  let cart;
+  cart = data;
+  this.storage.setItem('eaharaCart', JSON.stringify(cart));
+}
+
+getCart() {
+  let cart;
+  cart = JSON.parse(this.storage.getItem('eaharaCart'));
+  return cart;
+}
+
+removeCart() {
+    const cart = [];
+    this.storage.setItem('eaharaCart', JSON.stringify(cart));
+}
+
+setTokenInfo(data) {
+  this.tokenInfo = data;
+  this.storage.setItem('EaharaTokenInfo', JSON.stringify(this.tokenInfo));
+}
+
+getTokenInfo() {
+  this.tokenInfo = JSON.parse(this.storage.getItem('EaharaTokenInfo'));
+  return this.tokenInfo;
+}
+
+removeTokenInfo() {
+  this.tokenInfo = null;
+  this.storage.setItem('EaharaTokenInfo', JSON.stringify(this.tokenInfo));
+}
 }

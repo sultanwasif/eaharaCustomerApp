@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { AuthService } from "./auth.service";
-import * as _ from "lodash";
+import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
+import * as _ from 'lodash';
 
 export interface DeviceInfo {
   platform?: string;
@@ -11,12 +11,12 @@ export interface DeviceInfo {
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AppDataService {
   public deviceInfo: DeviceInfo;
 
   constructor(private authService: AuthService) {
     this.deviceInfo = {};
-  }      
+  }
 }

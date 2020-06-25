@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { env } from "../../environments/environment";
+import { env } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserInfo } from '../core/auth.service';
@@ -9,8 +9,8 @@ interface Register {
   UserName?: string;
   Password?: string;
   IsCheckedTerms?: boolean;
-  CustomerMMethods?:any;
-  MobileNo:string;
+  CustomerMMethods?: any;
+  MobileNo: string;
 }
 
 @Component({
@@ -23,58 +23,51 @@ export class ForgetpasswordComponent implements OnInit {
   private register: Register;
   envName;
   appVer;
-  phone: string = "";
-  otp: string = "";
-  otpRcv: string = "";
-  rstPassVw : boolean = false;
-  password: string = "";
-  cpassword: string = "";
+  phone = '';
+  otp = '';
+  otpRcv = '';
+  rstPassVw = false;
+  password = '';
+  cpassword = '';
 
   constructor(
     private router: Router,
     private http: HttpClient,
     private toastr: ToastrService) {
-    this.envName = env.NAME.trim().length > 0 ? `${env.NAME}` : "";
+    this.envName = env.NAME.trim().length > 0 ? `${env.NAME}` : '';
     this.appVer = env.APPVER;  }
 
   ngOnInit() {}
-  
-  
   SendOtp() {
-    debugger
-    if (this.phone.trim().length == 0 || this.phone.trim().length !== 10 ) {
-      this.toastr.error("Error","Phone No. Should be 10 digits")
-      return ""; 
-    };
-
-    this.http.get<any>(env.API + "SendTroubleOtp/" + this.phone).subscribe(data => {
-    if (data.Message == "Done") {
-
-      this.toastr.success('OTP Sent');
-
-        this.otpRcv = data.OTP;
-        this.user.Id = data.UserId;
-        this.rstPassVw = true;
+    if (this.phone.trim().length === 0 || this.phone.trim().length !== 10 ) {
+      this.toastr.error('Error', 'Phone No. Should be 10 digits');
+      return '';
     }
-    else if (data.Message == "NotRegistered")
-    {
-      this.http.get<any>(env.API + "SendRegisterOtp/" + this.phone).subscribe(data => {
+
+    this.http.get<any>(env.API + 'SendTroubleOtp/' + this.phone).subscribe(data => {
+    if (data.Message == 'Done') {
+      this.toastr.success('OTP Sent');
+      this.otpRcv = data.OTP;
+      this.user.Id = data.UserId;
+      this.rstPassVw = true;
+    } else if (data.Message == 'NotRegistered') {
+      this.http.get<any>(env.API + 'SendRegisterOtp/' + this.phone).subscribe(data => {
         if (data == 2) {
-          this.toastr.error("Error","Mobile No Error !");
+          this.toastr.error('Error', 'Mobile No Error !');
       } else if (data == 0) {
-        this.toastr.error("Error","Network Error !");
+        this.toastr.error('Error', 'Network Error !');
       } else {
-        this.toastr.success("Success","OTP Sent");
-          this.rstPassVw= true;
-          this.otpRcv = data;
-          this.user.Id = "";
+        this.toastr.success('Success', 'OTP Sent');
+        this.rstPassVw = true;
+        this.otpRcv = data;
+        this.user.Id = '';
       }
 
       });
     }
     else {
-          this.user.Id = "";          
-          this.toastr.error("Error",data.Message);
+          this.user.Id = '';          
+          this.toastr.error('Error',data.Message);
     }
   });
   }
@@ -82,19 +75,19 @@ export class ForgetpasswordComponent implements OnInit {
   onRegister() {
     debugger
     if (this.password.trim().length == 0) {
-      this.toastr.error("Error","Password Should not be Blank")
-      return ""; 
+      this.toastr.error('Error','Password Should not be Blank')
+      return ''; 
     };
     if (this.otp !== this.otpRcv)
     {
-      this.toastr.error("Error","OTP Wrong")
-      return "";      
+      this.toastr.error('Error','OTP Wrong')
+      return '';      
     };
 
     if (this.password !== this.cpassword)
     {
-      this.toastr.error("Error","Password Not Matched")
-      return "";      
+      this.toastr.error('Error','Password Not Matched')
+      return '';      
     };
     
     this.register = {
@@ -105,15 +98,15 @@ export class ForgetpasswordComponent implements OnInit {
       MobileNo: this.phone
     };
 
-    this.http.post<any>(env.API + "RegisterCustomer", this.register).subscribe(data => {
+    this.http.post<any>(env.API + 'RegisterCustomer', this.register).subscribe(data => {
       if (data == 1) {
-        this.toastr.success("Success","Successfully Registered")
-        this.router.navigate(["/login"]);
+        this.toastr.success('Success','Successfully Registered')
+        this.router.navigate(['/login']);
     } else if (data == 2) {
-        this.toastr.error("Error","Mobile Number Error")
+        this.toastr.error('Error','Mobile Number Error')
         this.rstPassVw = false;
     } else {
-      this.toastr.error("Error","Network Error")
+      this.toastr.error('Error','Network Error')
     }
 
     });
