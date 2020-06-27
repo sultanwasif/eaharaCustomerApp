@@ -50,7 +50,7 @@ export class FoodItemsComponent implements OnInit {
 
   ngOnInit() {
     this.basePath = env.API;
-    this.selShop = this.shopsService.selShop;
+    this.selShop = this.authService.selShop;
     if (this.selShop) {
       this.http.get<any>(env.API + 'ShopDetailById/' + this.selShop.Id).subscribe(data => {
         this.getShop = data;
@@ -60,6 +60,7 @@ export class FoodItemsComponent implements OnInit {
 
       });
     }
+    this.myCartInit();
   }
 
   myCartInit() {
@@ -73,13 +74,14 @@ export class FoodItemsComponent implements OnInit {
                     }
                 }
   }
+
   onAddClick(item) {
     if (this.getShop.StartTime > this.CurrentTime || this.getShop.EndTime < this.CurrentTime) {
-      this.toastr.error('Error', 'Shop Closed Cannot Process Now');
+      this.toastr.error('Shop Closed Cannot Process Now');
     } else if (this.getShop.Id !== this.SelectedShopId && this.ordersToCheckout.length > 0) {
-      this.toastr.error('Error', '* you cannot add items from multiple resturants in single order');
+      this.toastr.error('you cannot add items from multiple resturants in single order');
     } else if (item.InActive === true) {
-      this.toastr.error('Error', 'Sorry Item Not Available Now ! ');
+      this.toastr.error('Sorry Item Not Available Now ! ');
     } else {
 
         this.ToCart = {
@@ -111,7 +113,7 @@ export class FoodItemsComponent implements OnInit {
         this.authService.setCart(this.ordersToCheckout);
         this.myCartInit();
 
-        this.toastr.success('Success', 'Successfully Added to Cart');
+        this.toastr.success( 'Successfully Added to Cart');
     }
 
 

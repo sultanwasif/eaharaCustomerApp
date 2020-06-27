@@ -1,11 +1,10 @@
-import { Injectable } from "@angular/core";
-import { AuthService } from "../core/auth.service";
+import { Injectable } from '@angular/core';
+import { AuthService } from '../core/auth.service';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AllShopsDataService {
-  selShop;
 
   constructor(private authService: AuthService) {
   }

@@ -2,16 +2,17 @@
   <ion-toolbar>
     <div class="app-container d-table w-100 h-100">
       <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
+        <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
       </ion-buttons>
       <div class="head-icons d-table-cell align-middle">
+        <!-- <ion-title size="small">Restaurant</ion-title> -->
         <div class="app-icons app-logout">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="">
             <ion-icon name="notifications-outline"></ion-icon>
           </a>
         </div>
         <div class="app-icons app-logout">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/tabs/tab1/my-cart">
             <ion-icon name="cart-outline"></ion-icon>
           </a>
         </div>
@@ -93,10 +94,8 @@
                       </div>
                     </td>
                     <td valign="middle" class="b-arrow"  (click)="onAddClick(item)">
-                        <div class="app-logout">
-                          <a class="nav-link" href="#">
+                      <div class="app-increment">
                             <ion-icon name="add-circle"></ion-icon>
-                          </a>
                         </div>
                     </td>
                   </tr>

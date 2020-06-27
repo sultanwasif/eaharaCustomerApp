@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { env } from '../../environments/environment';
 import { AllShopsDataService } from './tab1.service';
+import { AuthService } from '../core/auth.service';
 
 interface Filter  {
   Preference: boolean;
@@ -31,7 +32,8 @@ export class Tab1Page {
     private router: Router,
     private http: HttpClient,
     private toastr: ToastrService,
-    private shopsService: AllShopsDataService) {
+    private shopsService: AllShopsDataService,
+    private authService: AuthService) {
       this.basePath = env.API;
       const d = new Date();
       const n = d.getMinutes();
@@ -56,7 +58,7 @@ export class Tab1Page {
   }
 
   onShopClick(shop) {
-    this.shopsService.selShop = shop;
+    this.authService.selShop = shop;
     this.router.navigate(['/tabs/tab1/food-items']);
   }
 

@@ -1,0 +1,62 @@
+<ion-header class="t-header">
+  <ion-toolbar>
+    <div class="app-container d-table w-100 h-100">
+      <ion-buttons slot="start" *ngIf="ordersToCheckout.length > 0">
+        <ion-back-button defaultHref="/tabs/tab1/my-cart" ></ion-back-button>
+      </ion-buttons>
+      <ion-buttons slot="start" *ngIf="ordersToCheckout.length <= 0">
+        <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+      </ion-buttons>
+      <!-- <ion-title>MY Cart</ion-title> -->
+      <div class="head-icons d-table-cell align-middle">
+        <div class="app-icons app-logout">
+          <a class="nav-link" href="#">
+            <ion-icon name="notifications-outline"></ion-icon>
+          </a>
+        </div>
+        <div class="app-icons app-logout">
+          <a class="nav-link" href="/tabs/tab1/my-cart">
+            <ion-icon name="cart-outline"></ion-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ng-container class="offerbg">
+  <ion-content>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item valign="middle">
+        <ion-label position="stacked">Address<ion-text color="danger">*</ion-text></ion-label>
+        <ion-textarea [(ngModel)]="Booking.Address"></ion-textarea>
+        <ion-icon slot="end" name="home-outline"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Remarks</ion-label>
+        <ion-textarea [(ngModel)]="Booking.Remarks"></ion-textarea>
+      </ion-item>
+      
+      <ion-item >
+          <ion-input placeholder="Promo Code" [(ngModel)]="Booking.Code"></ion-input>
+        <ion-button slot="end" color="danger" (click)="chkPromoCode()">Check</ion-button>
+      </ion-item>
+      <ion-item>
+        <p><b>My Wallet : {{Customer?.Points}}</b>
+          <br>
+          You can spend upto 10 Rs/- on each booking
+        </p>
+        <ion-button slot="end" color="danger" (click)="UseWallet()">Use <br> Wallet</ion-button>
+        <!-- <button type="button" class="section" (click)="UseWallet()">Use <br> Wallet</button> -->
+      </ion-item>
+      <ion-item>
+          Sub Total : {{SubTotal}} RS /-
+                    <br> Wallet Cash : RS {{WalletCash}} /-
+                    <br> Delivery Charge : {{TotalDeliveryCharge}} RS /-
+      </ion-item>
+    </ion-list>
+    <div>
+      <ion-button size="large" expand="full" color="danger" (click)= "PlaceOrder()" >Place Order {{ Total}}</ion-button>
+    </div>
+  </ion-content>
+</ng-container>

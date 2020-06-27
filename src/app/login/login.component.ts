@@ -44,11 +44,7 @@ export class LoginComponent implements OnInit {
       this.envName = env.NAME.trim().length > 0 ? `${env.NAME}` : '';
       this.appVer = env.APPVER;
       const TokenInfo = this.authService.getTokenInfo();
-      if (TokenInfo != null) {
-        // this.user = {
-        //   UserName: TokenInfo.UserName,
-        //   Password: ''
-        // };
+      if (TokenInfo) {
         this.router.navigate(['/tabs/tab1']);
         }
     }
@@ -73,11 +69,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.email.trim().length === 0) {
-      this.toastr.error('Error', 'Phone No. Should not be null');
+      this.toastr.error( 'Phone No. Should not be null');
       return '';
     }
     if (this.password.trim().length === 0) {
-      this.toastr.error('Error', 'Password. Should not be null');
+      this.toastr.error( 'Password. Should not be null');
       return '';
     }
     this.user = {

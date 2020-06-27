@@ -1,9 +1,13 @@
 <ion-header class="t-header">
   <ion-toolbar>
     <div class="app-container d-table w-100 h-100">
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
+      <ion-buttons slot="start1" *ngIf="ordersToCheckout.length > 0">
+        <ion-back-button defaultHref="/tabs/tab1/food-items" ></ion-back-button>
       </ion-buttons>
+      <ion-buttons slot="start1" *ngIf="ordersToCheckout.length <= 0">
+        <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+      </ion-buttons>
+      <!-- <ion-title>MY Cart</ion-title> -->
       <div class="head-icons d-table-cell align-middle">
         <div class="app-icons app-logout">
           <a class="nav-link" href="#">
@@ -11,7 +15,7 @@
           </a>
         </div>
         <div class="app-icons app-logout">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/tabs/tab1/my-cart">
             <ion-icon name="cart-outline"></ion-icon>
           </a>
         </div>
@@ -22,14 +26,10 @@
 <ng-container class="offerbg">  
   <ion-content>
   <div class="app-container p-1 bg-container">
-        <ng-container>
-          <ion-item-group *ngFor="let Cat of allItems | orderBy:['Priority']">
-            <ion-item-divider>
-              <ion-label><b>{{Cat?.Name}}</b></ion-label>
-            </ion-item-divider>
+        <ng-container *ngIf="ordersToCheckout.length > 0">
               <div
                 class="p-2 m-1 flex-fill busroute-item"
-                *ngFor="let item of Cat.Items"
+                *ngFor="let item of ordersToCheckout"
               >
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tbody>
@@ -39,9 +39,9 @@
                         <img src="{{basePath}}{{item.Image}}" class="thumbnailImg"/>
                         <!-- <img src="{{basePath}}{{item.Image}}"/> -->
                       <!-- </ion-thumbnail> -->
-                      <div *ngIf="item.InActive" class="text-over-img">
-                      <span *ngIf="item.InActive">Not Available</span>
-                     </div>
+                      <div class="app-remove" (click)="removeCart(item)">
+                        <ion-icon name="close-circle-outline"></ion-icon>
+                    </div>
                       </td>
                       <td valign="middle" class="b-devider">
                         <img src="assets/Images/devider.png" alt="" />
@@ -51,22 +51,62 @@
                           <b>{{ item.Name }}</b>
                         </div>
                         <div class="">
-                          RS {{item.Price}} /-
+                          Price : {{item.Price}} Rs
+                        </div>
+                        <div class="">
+                          Discount : {{item.DiscountPrice}} Rs
+                        </div>
+                        <div class="">
+                          Qty : {{item.Quantity}}
+                        </div>
+                        <div>
+                          Total : {{(item.DiscountPrice * item.Quantity)}}   RS
                         </div>
                       </td>
-                      <td valign="middle" class="b-arrow"  (click)="onAddClick(item)">
-                          <div class="app-logout">
-                            <a class="nav-link" href="#">
-                              <ion-icon name="add-circle"></ion-icon>
-                            </a>
+                      <td valign="middle" class="b-arrow">
+                        <div class="app-increment" (click)="incrQty(item)">
+                            <ion-icon name="add-circle"></ion-icon>
+                        </div>
+                        <div class="app-qty">
+                              {{item.Quantity}}
+                          </div>
+                          
+                          <div class="app-dicrement" (click)="dcrQty(item)">
+                            <ion-icon name="remove-circle-outline"></ion-icon>
                           </div>
                       </td>
                     </tr>
                   </tbody>
                 </table>
-              </div>            
-          </ion-item-group>
+              </div>
+              
+          <div>
+            <div class="center-text" *ngIf=" AbvAverage >= 0">
+                <p>From {{ordersToCheckout[0].Shop}} </p>
+                <p>Order Total : {{SubTotal}} Rs. </p>
+                <p>Delivery Charge : {{TotalDeliveryCharge}} Rs.</p>
+                <p>Amount To Be Paid : {{Total}} Rs.</p>
+            </div>
+
+            <div *ngIf="AbvAverage >=  0" >
+              <ion-button expand="full" color="danger" (click)="viewFromCart()">Proceed To Check Out {{Total}} RS</ion-button>
+            </div>
+
+            <div *ngIf="AbvAverage < 0" >
+              <h4 style="color:red;">Sub total less than minimum order cost. Please add more items.</h4>
+              <p>Sub total : {{SubTotal}} Rs.</p>
+              <p>Minimum order cost for {{Shop?.Name}} : {{Shop?.AverageCost}} Rs.</p>
+              <br />
+              <ion-button expand="full" color="danger" (click)="continueShop()">Continue Shopping</ion-button>
+          </div>
+        </div>           
             </ng-container> 
+            <div class="mar-t15 center-text" *ngIf="ordersToCheckout.length <= 0">
+              <img src="assets/Images/cart.png" class="w-30">
+              <br>
+              <br>
+              <p>Oops Cart Empty</p>
+          </div>  
     </div>
     </ion-content>
     </ng-container>

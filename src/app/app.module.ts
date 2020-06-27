@@ -24,7 +24,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }) // ToastrModule added
   ],
   providers: [
     StatusBar,

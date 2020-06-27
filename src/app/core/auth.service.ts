@@ -27,6 +27,7 @@ export class AuthService {
   public school: any;
   private isLoggedin: boolean;
   public storage = window.localStorage;
+  public selShop;
 
   // store the URL so we can redirect after logging in
   redirectUrl: string;

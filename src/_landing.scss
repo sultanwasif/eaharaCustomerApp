@@ -104,20 +104,20 @@ img.logo-img {
   color: #f7b036;
 }
 
-.busroute-item:hover,.busroute-item.active {
-	background: #3d9ef7;
-}
-.pm-busroutes .busroute-item:hover, .pm-busroutes .busroute-item.active {
-	background: #f7b036;
-}
-.busroute-item:hover .b-no,
-.busroute-item:hover .b-label,
-.busroute-item:hover .b-label b,
-.busroute-item:hover .b-arrow
-{
-	color: #FFFFFF;
-	opacity: 1;
-}
+// .busroute-item:hover,.busroute-item.active {
+// 	background: #3d9ef7;
+// }
+// .pm-busroutes .busroute-item:hover, .pm-busroutes .busroute-item.active {
+// 	background: #f7b036;
+// }
+// .busroute-item:hover .b-no,
+// .busroute-item:hover .b-label,
+// .busroute-item:hover .b-label b,
+// .busroute-item:hover .b-arrow
+// {
+// 	color: #FFFFFF;
+// 	opacity: 1;
+// }
 
 .st-list-item:hover,.st-list-item.active {
 	background: #FFF;
@@ -386,6 +386,32 @@ img.logo-img {
 	padding-right: 0;
 }
 
+.app-increment {
+font-size: 35px;
+line-height: 0;
+padding-right: 0;
+color: #E44141;
+}
+
+.app-remove {
+  font-size: 25px;
+  line-height: 0;
+  padding-right: 0;
+  color: #E44141;
+  }
+.app-dicrement {
+  font-size: 35px;
+  line-height: 0;
+  padding-right: 0;
+  color: #E44141;
+  }
+  .app-qty {
+    font-size: 25px;
+    text-align: center;
+    line-height: 1;
+    padding-right: 4;
+    color: #E44141;
+    }
 .busroute_innerlist .busroute-item {
     min-height: 70px;
     border: 2px solid transparent;
@@ -478,5 +504,11 @@ ion-toolbar .head-icons {
 }
 h5 {
     font-size: 1.1rem;
+}
+.center-text{
+    text-align: center!important;
+}
+.mar-t15{
+    margin-top:15%!important;
 }
 
