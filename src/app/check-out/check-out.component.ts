@@ -248,4 +248,8 @@ Booking = {
 
 }
 
+ViewCart() {
+  this.router.navigate(['/tabs/tab1/my-cart']);
+}
+
 }

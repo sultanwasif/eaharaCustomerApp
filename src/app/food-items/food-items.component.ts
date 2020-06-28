@@ -40,7 +40,8 @@ export class FoodItemsComponent implements OnInit {
     private shopsService: AllShopsDataService,
     private http: HttpClient,
     private toastr: ToastrService,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private router: Router) {
       const d = new Date();
       const n = d.getMinutes();
       const h = d.getHours();
@@ -115,8 +116,10 @@ export class FoodItemsComponent implements OnInit {
 
         this.toastr.success( 'Successfully Added to Cart');
     }
+  }
 
-
+ViewCart() {
+  this.router.navigate(['/tabs/tab1/my-cart']);
 }
 
 }

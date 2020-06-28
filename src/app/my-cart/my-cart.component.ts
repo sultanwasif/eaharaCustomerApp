@@ -168,7 +168,10 @@ viewFromCart() {
 continueShop() {
   this.authService.selShop = this.Shop;
   this.router.navigate(['/tabs/tab1/food-items']);
+}
 
+ViewCart() {
+  this.router.navigate(['/tabs/tab1/my-cart']);
 }
 
 }

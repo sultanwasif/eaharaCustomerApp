@@ -9,15 +9,9 @@
       </ion-buttons>
       <!-- <ion-title>MY Cart</ion-title> -->
       <div class="head-icons d-table-cell align-middle">
-        <div class="app-icons app-logout">
-          <a class="nav-link" href="#">
-            <ion-icon name="notifications-outline"></ion-icon>
-          </a>
-        </div>
-        <div class="app-icons app-logout">
-          <a class="nav-link" href="/tabs/tab1/my-cart">
-            <ion-icon name="cart-outline"></ion-icon>
-          </a>
+        <div class="app-increment">
+          <ion-icon name="notifications-outline" style='margin-right:15px'></ion-icon>
+          <ion-icon name="cart-outline" (click)="ViewCart()"></ion-icon>            
         </div>
       </div>
     </div>

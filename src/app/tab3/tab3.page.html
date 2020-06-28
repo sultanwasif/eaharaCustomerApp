@@ -1,17 +1,149 @@
-<ion-header [translucent]="true">
+<ion-header class="t-header">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <div class="app-container d-table w-100 h-100">
+      <div class="brand-logo d-table-cell align-middle pl-3">
+        <img src="assets/Images/logo.png" alt="ST Logo" class="logo-img" />
+      </div>
+      <div class="head-icons d-table-cell align-middle">
+        <!-- <div class="app-icons app-logout">
+          <a class="nav-link" href="">
+            <ion-icon name="notifications-outline"></ion-icon>
+          </a>
+        </div> -->
+        <!-- <div class="app-increment">
+          <ion-icon name="notifications-outline"></ion-icon>
+      </div> -->
+        <div class="app-increment">
+          <ion-icon name="notifications-outline" style='margin-right:15px'></ion-icon>
+            <ion-icon name="log-out-outline"></ion-icon>
+        </div>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
+<ng-container class="offerbg">  
+<ion-content>
+<div class="app-container p-1 bg-container">
+<div class="p-2 m-1 flex-fill busroute-item">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr (click)="onProfile()">
+                  <td valign="middle" class="b-no">
+                    <div class="app-increment">
+                      <ion-icon name="person-circle-outline"></ion-icon>
+                    </div>
+                  </td>
+                  <td valign="middle" class="b-devider">
+                    <img src="assets/Images/devider.png" alt="" />
+                  </td>
+                  <td valign="middle" class="b-label">
+                    <b>PROFILE</b> <br>
+                    <small>Edit your Details</small>
+                    <!-- <p><small>Edit your Details</small></p> -->
+                  </td>
+                  <td valign="middle" class="b-arrow">
+                    <ion-icon src="assets/Images/arrow-forward.svg"></ion-icon>
+                  </td>
+                </tr>                
+              </tbody>
+            </table>
+          </div>
+          
+<div class="p-2 m-1 flex-fill busroute-item">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody>      
+      <tr (click)="onWallet()">
+        <td valign="middle" class="b-no">
+          <div class="app-increment">
+            <ion-icon name="wallet-outline"></ion-icon>
+          </div>
+        </td>
+        <td valign="middle" class="b-devider">
+          <img src="assets/Images/devider.png" alt="" />
+        </td>
+        <td valign="middle" class="b-label">
+          <b>WALLET CASH</b> <br>
+                    <small>Cash in Your Wallet</small>
+        </td>
+        <td valign="middle" class="b-arrow">
+          <ion-icon src="assets/Images/arrow-forward.svg"></ion-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<div class="p-2 m-1 flex-fill busroute-item">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+      <tr (click)="onRefer()">
+        <td valign="middle" class="b-no">
+          <div class="app-increment">
+            <ion-icon name="share-outline"></ion-icon>
+          </div>
+        </td>
+        <td valign="middle" class="b-devider">
+          <img src="assets/Images/devider.png" alt="" />
+        </td>
+        <td valign="middle" class="b-label">
+          <b>REFER FRIEND</b> <br>
+                    <small>Share App Link to Earn Cash</small>
+        </td>
+        <td valign="middle" class="b-arrow">
+          <ion-icon src="assets/Images/arrow-forward.svg"></ion-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+<div class="p-2 m-1 flex-fill busroute-item">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+      <tr (click)="onRefer()">
+        <td valign="middle" class="b-no">
+          <div class="app-increment">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+          </div>
+        </td>
+        <td valign="middle" class="b-devider">
+          <img src="assets/Images/devider.png" alt="" />
+        </td>
+        <td valign="middle" class="b-label">
+          <b>CHANGE PASSWORD</b> <br>
+                    <small>Change Password</small>
+        </td>
+        <td valign="middle" class="b-arrow">
+          <ion-icon src="assets/Images/arrow-forward.svg"></ion-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="p-2 m-1 flex-fill busroute-item">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+      <tr (click)="onRefer()">
+        <td valign="middle" class="b-no">
+          <div class="app-increment">
+            <ion-icon name="home-outline"></ion-icon>
+          </div>
+        </td>
+        <td valign="middle" class="b-devider">
+          <img src="assets/Images/devider.png" alt="" />
+        </td>
+        <td valign="middle" class="b-label">
+          <b>MANAGE ADDRESSES</b> <br>
+                    <small>Add / Update / Remove Addresses</small>
+        </td>
+        <td valign="middle" class="b-arrow">
+          <ion-icon src="assets/Images/arrow-forward.svg"></ion-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
 </ion-content>
+</ng-container>
