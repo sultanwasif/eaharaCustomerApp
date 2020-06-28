@@ -146,18 +146,18 @@ removeCart(data) {
 
   for (const e of this.ordersToCheckout) {
       if (data) {
-          const index1 = this.ordersToCheckout.indexOf(e);
-          this.ordersToCheckout.splice(index1, 1);
-      } else
       if (e.Id === data.Id) {
-          const index = this.ordersToCheckout.indexOf(data);
-          this.ordersToCheckout.splice(index, 1);
+        const index1 = this.ordersToCheckout.indexOf(data);
+        this.ordersToCheckout.splice(index1, 1);
       }
-
+    } else {
+        const index1 = this.ordersToCheckout.indexOf(e);
+        this.ordersToCheckout.splice(index1, 1);
+      }
   }
-
   this.updateCart();
 }
+
 viewFromCart() {
   this.router.navigate(['/tabs/tab1/check-out']);
   // $state.go('packagesDetail', {

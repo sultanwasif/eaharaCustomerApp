@@ -30,6 +30,7 @@
     "cordova-plugin-device": "^2.0.2",
     "core-js": "^2.5.4",
     "ngx-order-pipe": "^2.0.4",
+    "ngx-spinner": "^9.0.2",
     "ngx-toastr": "^10.1.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",

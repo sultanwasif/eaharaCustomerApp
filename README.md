@@ -1,6 +1,10 @@
 # eaharaCustomerApp
 Eahara Customer Application
 
+Version : 1.0.4
+Changes : Loader Added (Spinner NGX Added, Interceptor Added to show loader) My Cart Bug Fixes Added.
+Date : 28-06-2020
+
 Version : 1.0.3
 Changes : Track Order Tab View List Screen, Profile View List Screen, Icons Enlarge.
 Pending : Whole Sub Pages of Two Above New Tabs

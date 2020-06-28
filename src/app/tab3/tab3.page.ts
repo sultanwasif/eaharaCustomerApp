@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../core/auth.service';
+import { env } from 'src/environments/environment';
 
 @Component({
   selector: 'app-tab3',
@@ -6,11 +11,29 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  Profile;
+  TokenInfo: any;
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private authService: AuthService) {
+      this.loadData();
+    }
 
   onProfile() {}
   onWallet() {}
   onRefer() {}
+
+  loadData() {
+    this.TokenInfo = this.authService.getTokenInfo();
+    this.Profile = {};
+    this.http.get<any>(env.API + 'CustomerById/' + this.TokenInfo.CustomerId).subscribe(data => {
+      this.Profile = data;
+  },
+  err => console.log(err),
+  );
+  }
 
 }
