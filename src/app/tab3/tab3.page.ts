@@ -30,6 +30,9 @@ export class Tab3Page {
   onChangePass() {
     this.router.navigate(['/tabs/tab3/change-password']);
   }
+  onAddress() {
+    this.router.navigate(['/tabs/tab3/your-address']);
+  }
 
   loadData() {
     this.TokenInfo = this.authService.getTokenInfo();

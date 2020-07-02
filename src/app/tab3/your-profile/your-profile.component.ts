@@ -34,4 +34,16 @@ export class YourProfileComponent implements OnInit {
   );
   }
 
+  SaveProfile() {
+
+    this.http.post<any>(env.API + 'updateCustomer', this.Profile).subscribe(data => {
+      if (data) {
+        this.toastr.success( 'Successfully Updated Profile');
+    }
+    },
+  err => {
+    this.toastr.error( 'Network Error');
+  });
+}
+
 }

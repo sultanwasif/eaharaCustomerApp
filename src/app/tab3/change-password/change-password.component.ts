@@ -34,9 +34,9 @@ UserUpdate;
       this.UserUpdate.Id = TokenInfo.UserId;
         }
 
-    if (this.UserUpdate.Password) {
+    if (!this.UserUpdate.Password) {
       this.toastr.error( 'Enter Password');
-                } else if (this.UserUpdate.CPassword) {
+                } else if (!this.UserUpdate.CPassword) {
                   this.toastr.error( 'Enter Confirm Password');
                 } else if (this.UserUpdate.Password !== this.UserUpdate.CPassword) {
                   this.toastr.error( 'Password Not Matched');
@@ -47,13 +47,16 @@ UserUpdate;
                 } else {
     this.http.post<any>(env.API + 'ChangePassword', this.UserUpdate).subscribe(data => {
       if (data) {
-        this.toastr.error( 'Successfully Changed Password');
+        this.toastr.success( 'Successfully Changed Password');
         this.UserUpdate = {
             Password: '',
             CPassword: ''
         };
     }
-    });
+    },
+  err => {
+    this.toastr.error( 'Network Error');
+  });
   }
   }
 

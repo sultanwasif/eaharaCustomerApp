@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { env } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { UserInfo } from '../core/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 interface Register {
@@ -13,14 +12,15 @@ interface Register {
   MobileNo: string;
 }
 
+
 @Component({
   selector: 'app-forgetpassword',
   templateUrl: './forgetpassword.component.html',
   styleUrls: ['./forgetpassword.component.scss'],
 })
 export class ForgetpasswordComponent implements OnInit {
-  private user: UserInfo;
-  private register: Register;
+  userId;
+  register: Register;
   envName;
   appVer;
   phone = '';
@@ -29,6 +29,8 @@ export class ForgetpasswordComponent implements OnInit {
   rstPassVw = false;
   password = '';
   cpassword = '';
+  isNew = false;
+  RegUser;
 
   constructor(
     private router: Router,
@@ -37,7 +39,14 @@ export class ForgetpasswordComponent implements OnInit {
     this.envName = env.NAME.trim().length > 0 ? `${env.NAME}` : '';
     this.appVer = env.APPVER;  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userId = '';
+    this.RegUser = {
+      Id: '',
+      Password: '',
+      CPassword: ''
+  };
+  }
   SendOtp() {
     if (this.phone.trim().length === 0 || this.phone.trim().length !== 10 ) {
       this.toastr.error( 'Phone No. Should be 10 digits');
@@ -48,7 +57,9 @@ export class ForgetpasswordComponent implements OnInit {
     if (data.Message == 'Done') {
       this.toastr.success('OTP Sent');
       this.otpRcv = data.OTP;
-      this.user.Id = data.UserId;
+      this.isNew = false;
+      //this.user.Id = data.UserId;
+      this.userId = data.UserId;
       this.rstPassVw = true;
     } else if (data.Message == 'NotRegistered') {
       this.http.get<any>(env.API + 'SendRegisterOtp/' + this.phone).subscribe(data => {
@@ -58,15 +69,16 @@ export class ForgetpasswordComponent implements OnInit {
         this.toastr.error( 'Network Error !');
       } else {
         this.toastr.success( 'OTP Sent');
+        this.isNew = true;
         this.rstPassVw = true;
         this.otpRcv = data;
-        this.user.Id = '';
+        this.userId = '';
       }
 
       });
     } else {
-          this.user.Id = '';
-          this.toastr.error(data.Message);
+      this.userId = '';
+      this.toastr.error(data.Message);
     }
   });
   }
@@ -76,18 +88,19 @@ export class ForgetpasswordComponent implements OnInit {
       this.toastr.error( 'Password Should not be Blank');
       return '';
     }
-    if (this.otp !== this.otpRcv)
+    if (this.otp != this.otpRcv)
     {
       this.toastr.error( 'OTP Wrong')
       return '';
     };
 
-    if (this.password !== this.cpassword)
+    if (this.password != this.cpassword)
     {
       this.toastr.error( 'Password Not Matched')
       return '';
     }
-    
+    if (this.isNew) {
+      
     this.register = {
       UserName: this.phone,
       Password: this.password,
@@ -98,16 +111,32 @@ export class ForgetpasswordComponent implements OnInit {
 
     this.http.post<any>(env.API + 'RegisterCustomer', this.register).subscribe(data => {
       if (data == 1) {
-        this.toastr.success('Successfully Registered')
+        this.toastr.success('Successfully Registered');
         this.router.navigate(['/login']);
     } else if (data == 2) {
-        this.toastr.error('Mobile Number Error')
+        this.toastr.error('Mobile Number Error');
         this.rstPassVw = false;
     } else {
-      this.toastr.error('Network Error')
+      this.toastr.error('Network Error');
     }
 
     });
+    } else {
+      this.RegUser = {
+        Id: this.userId,
+        Password: this.password,
+        CPassword: this.cpassword
+    };
+      this.http.post<any>(env.API + 'ChangePassword', this.RegUser).subscribe(data => {
+      if (data) {
+        this.toastr.success( 'Successfully Changed Password');
+        this.router.navigate(['/login']);
+    }
+    },
+  err => {
+    this.toastr.error( 'Network Error');
+  });
+    }
   }
 
 }
