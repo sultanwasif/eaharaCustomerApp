@@ -31,9 +31,9 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     BrowserAnimationsModule,
     NgxSpinnerModule,
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 1500,
       positionClass: 'toast-bottom-right',
-      preventDuplicates: true
+      closeButton: true
     }) // ToastrModule added
   ],
   providers: [

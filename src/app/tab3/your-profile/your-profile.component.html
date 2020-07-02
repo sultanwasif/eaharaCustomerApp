@@ -1,0 +1,44 @@
+<ion-header class="t-header">
+  <ion-toolbar>
+    <div class="app-container d-table w-100 h-100">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/tab3" ></ion-back-button>
+      </ion-buttons>
+      <!-- <ion-title>MY Cart</ion-title> -->
+      <div class="head-icons d-table-cell align-middle">
+        <div class="app-increment">
+          <ion-icon name="notifications-outline" style='margin-right:15px'></ion-icon>
+          <ion-icon name="cart-outline"></ion-icon>            
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ng-container class="offerbg">
+  <ion-content>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item valign="middle">
+        <ion-label position="stacked">Name<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input [(ngModel)]="Profile.Name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Mobile</ion-label>
+        <ion-input [(ngModel)]="Profile.MobileNo" [readonly]= true></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input [(ngModel)]="Profile.Email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Referral Number</ion-label>
+        <ion-input [(ngModel)]="Profile.RefNo" [readonly]= true></ion-input>
+      </ion-item>
+    </ion-list>
+    <div>
+      <ion-button size="large" expand="full" color="danger" > Update </ion-button>
+    </div>
+  </ion-content>
+</ng-container>

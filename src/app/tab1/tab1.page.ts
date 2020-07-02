@@ -27,6 +27,8 @@ export class Tab1Page {
   basePath;
   offers;
   CurrentTime;
+  LocInfo;
+  LocationSelected = false;
 
   constructor(
     private router: Router,
@@ -35,26 +37,39 @@ export class Tab1Page {
     private shopsService: AllShopsDataService,
     private authService: AuthService) {
       this.basePath = env.API;
-      const d = new Date();
-      const n = d.getMinutes();
-      const h = d.getHours();
-      this.CurrentTime = h + '.' + n;
-      this.CurrentTime = parseFloat(this.CurrentTime);
+  }
+
+  ionViewDidEnter() {
+    this.loadData();
+  }
+
+  loadData() {
+    const d = new Date();
+    const n = d.getMinutes();
+    const h = d.getHours();
+    this.CurrentTime = h + '.' + n;
+    this.CurrentTime = parseFloat(this.CurrentTime);
+    this.LocInfo = this.authService.getLocInfo();
+    if (this.LocInfo) {
+      this.LocationSelected = true;
+      this.http.get<any>(env.API + 'GetOffersInHome/' + this.LocInfo.Id).subscribe(data => {
+      this.offers = data;
+    });
+
       this.filter = {
-        Preference: false,
-  Preference2: false,
-  Keyword: '',
-  Pagenation: 0,
-  ShopsCategories: [],
-  ItemCategories: [],
-  LocationId: 1
-      };
+      Preference: false,
+Preference2: false,
+Keyword: '',
+Pagenation: 0,
+ShopsCategories: [],
+ItemCategories: [],
+LocationId: this.LocInfo.Id
+    };
       this.http.post<any>(env.API + 'ShopsWithFilter', this.filter).subscribe(data => {
       this.shops = data;
     });
-      this.http.get<any>(env.API + 'GetOffersInHome/' + this.filter.LocationId).subscribe(data => {
-      this.offers = data;
-    });
+
+  }
   }
 
   onShopClick(shop) {
@@ -63,6 +78,9 @@ export class Tab1Page {
   }
   ViewCart() {
     this.router.navigate(['/tabs/tab1/my-cart']);
+  }
+  changeLoc() {
+    this.router.navigate(['/tabs/tab1/change-location']);
   }
 
 }

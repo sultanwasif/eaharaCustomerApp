@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../core/auth.service';
+import { AuthService } from 'src/app/core/auth.service';
 import { env } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+  selector: 'app-your-profile',
+  templateUrl: './your-profile.component.html',
+  styleUrls: ['./your-profile.component.scss'],
 })
-export class Tab3Page {
+export class YourProfileComponent implements OnInit {
   Profile;
   TokenInfo: any;
 
@@ -18,17 +18,10 @@ export class Tab3Page {
     private router: Router,
     private http: HttpClient,
     private toastr: ToastrService,
-    private authService: AuthService) {
-      this.loadData();
-    }
+    private authService: AuthService) { }
 
-  onProfile() {
-    this.router.navigate(['/tabs/tab3/your-profile']);
-  }
-  onWallet() {}
-  onRefer() {}
-  onChangePass() {
-    this.router.navigate(['/tabs/tab3/change-password']);
+  ngOnInit() {
+    this.loadData();
   }
 
   loadData() {
@@ -36,7 +29,7 @@ export class Tab3Page {
     this.Profile = {};
     this.http.get<any>(env.API + 'CustomerById/' + this.TokenInfo.CustomerId).subscribe(data => {
       this.Profile = data;
-  },
+      },
   err => console.log(err),
   );
   }

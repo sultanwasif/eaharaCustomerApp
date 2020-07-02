@@ -9,6 +9,7 @@ import { BusRouteRoutingModule } from './tab1-routing.module';
 import { FoodItemsModule } from '../food-items/food-items.module';
 import { MyCartModule } from '../my-cart/my-cart.module';
 import { CheckOutModule } from '../check-out/check-out.module';
+import { ChangeLocationModule } from '../change-location/change-location.module';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CheckOutModule } from '../check-out/check-out.module';
     FoodItemsModule,
     MyCartModule,
     CheckOutModule,
+    ChangeLocationModule,
     RouterModule.forChild([{ path: '', component: Tab1Page }])
   ],
   declarations: [Tab1Page]

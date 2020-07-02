@@ -14,7 +14,6 @@ export class MyLoaderComponent implements OnInit {
   constructor(private loaderService: LoaderService,
               private SpinnerService: NgxSpinnerService) {
     this.loaderService.isLoading.subscribe((v) => {
-      console.log(v);
       this.loading = v;
       this.SpinnerService.show();
     });

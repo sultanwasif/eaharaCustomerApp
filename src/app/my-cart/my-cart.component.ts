@@ -41,6 +41,7 @@ export class MyCartComponent implements OnInit {
     this.TotalDeliveryCharge = 0;
     this.AbvAverage = 0;
     const cart = this.authService.getCart();
+    if (cart) {
     if (cart.length > 0) {
         this.ordersToCheckout = cart;
         this.http.get<any>(env.API + 'ShopDetailById/' + this.ordersToCheckout[0].ShopId).subscribe(data => {
@@ -51,6 +52,8 @@ export class MyCartComponent implements OnInit {
                 }
               });
     }
+  }
+
   }
 
   mycartinit() {

@@ -1,5 +1,15 @@
 # eaharaCustomerApp
 Eahara Customer Application
+( important notes are last to this page)
+
+
+
+Version : 1.0.5
+Changes : Location selection, updation done, Sub pages are done for change password and profile
+          Bug fixes in Add to cart button done.
+Pending : Function for update in Change password and Profile Page and Address Screen Pednding,
+          Tab 2 Order Track Feautures are Pending
+Date : 28-06-2020
 
 Version : 1.0.4
 Changes : Loader Added (Spinner NGX Added, Interceptor Added to show loader) My Cart Bug Fixes Added.
@@ -27,3 +37,11 @@ Changes : Login, forget Password, Shop List Page
 Date : 01-04-2020
 
 
+
+
+
+
+
+Important Notes
+Ionic Changes not works on Browser (ionChnage)
+chrome://inspect/#devices

@@ -62,7 +62,7 @@
           <img src="assets/Images/devider.png" alt="" />
         </td>
         <td valign="middle" class="b-label">
-          <b>WALLET CASH</b> <br>
+          <b>WALLET CASH : {{Profile.Points}}</b> <br>
                     <small>Cash in Your Wallet</small>
         </td>
         <td valign="middle" class="b-arrow">
@@ -87,7 +87,8 @@
         </td>
         <td valign="middle" class="b-label">
           <b>REFER FRIEND</b> <br>
-                    <small>Share App Link to Earn Cash</small>
+                    <small>Share App Link to Earn Cash. <br>
+                      Refer Code ({{Profile.RefNo}})</small>
         </td>
         <td valign="middle" class="b-arrow">
           <ion-icon src="assets/Images/arrow-forward.svg"></ion-icon>
@@ -100,7 +101,7 @@
 <div class="p-2 m-1 flex-fill busroute-item">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tbody>
-      <tr (click)="onRefer()">
+      <tr (click)="onChangePass()">
         <td valign="middle" class="b-no">
           <div class="app-increment">
             <ion-icon name="lock-closed-outline"></ion-icon>

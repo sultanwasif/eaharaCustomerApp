@@ -1,0 +1,25 @@
+<ion-header class="t-header">
+  <ion-toolbar>
+    <div class="app-container d-table w-100 h-100">
+      <div class="brand-logo d-table-cell align-middle pl-3">
+        <img src="assets/Images/logo.png" alt="ST Logo" class="logo-img" />
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+    <ion-list>
+    <ion-radio-group value={{locid}}>
+      <ion-list-header>
+        <ion-label>Select Location</ion-label>
+      </ion-list-header>
+     <ng-container *ngFor="let loc of LocDropInfo">
+      <ion-item>
+        <ion-label>{{loc.Name}}</ion-label>
+        <!-- (ionChange)="changeLoc($event)" -->
+        <a (click)="changeLoc(loc)"><ion-radio slot="end" color="primary" value={{loc.Id}}></ion-radio></a>
+      </ion-item>      
+     </ng-container>
+    </ion-radio-group>
+    </ion-list>
+  </ion-content>

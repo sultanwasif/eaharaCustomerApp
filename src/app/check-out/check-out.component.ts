@@ -14,42 +14,45 @@ export class CheckOutComponent implements OnInit {
   ordersToCheckout = [];
   Customer;
   TokenInfo;
+  LocInfo;
   SubTotal = 0;
   WalletCash = 0;
   TotalDeliveryCharge = 0;
   basePath;
   Total;
   Shop;
-Booking = {
-    Description: '',
-    Remarks: '',
-    Time: '',
-    Name: '',
-    MobileNo: '',
-    EmailId: '',
-    Address: '',
-    Lat: '',
-    Lng: '',
-    Code: '',
-    LocationId: '',
-    IsOffer: false,
-    AddressId: 0,
-    OrderDate: new Date(),
-    PromoOfferId: 0,
-    Total : 0,
-    TotalDeliveryCharge: 0,
-    SubTotal: 0,
-    WalletCash: 0,
-    PromoOfferPrice: 0,
-    ShopId: 0,
-    CustomerId: 0,
-    Month: 0,
-    Day: 0,
-    Year: 0,
-    Hour: 0,
-    Minutes: 0,
-    BookingDetails: []
-};
+  CompanyProfile;
+  Booking;
+// Booking = {
+//     Description: '',
+//     Remarks: '',
+//     Time: '',
+//     Name: '',
+//     MobileNo: '',
+//     EmailId: '',
+//     Address: '',
+//     Lat: '',
+//     Lng: '',
+//     Code: '',
+//     LocationId: '',
+//     IsOffer: false,
+//     AddressId: 0,
+//     OrderDate: new Date(),
+//     PromoOfferId: 0,
+//     Total : 0,
+//     TotalDeliveryCharge: 0,
+//     SubTotal: 0,
+//     WalletCash: 0,
+//     PromoOfferPrice: 0,
+//     ShopId: 0,
+//     CustomerId: 0,
+//     Month: 0,
+//     Day: 0,
+//     Year: 0,
+//     Hour: 0,
+//     Minutes: 0,
+//     BookingDetails: []
+// };
   Offer: any;
   Total2: any;
 
@@ -62,12 +65,36 @@ Booking = {
 
   ngOnInit() {
     this.TokenInfo = this.authService.getTokenInfo();
+    this.LocInfo = this.authService.getLocInfo();
     this.http.get<any>(env.API + 'CustomerById/' + this.TokenInfo.CustomerId).subscribe(data => {
       this.Customer = data;
       this.inItCart();
   },
   err => console.log(err),
   );
+    this.http.get<any>(env.API + 'GetCompanyProfile').subscribe(data => {
+    this.CompanyProfile = data;
+},
+err => console.log(err),
+);
+    this.Booking = {
+  Description: '',
+  Remarks: '',
+  Time: '',
+  Name: '',
+  MobileNo: '',
+  EmailId: '',
+  Address: '',
+  Lat: 18.1019,
+  Lng: 78.8521,
+  Code: '',
+  LocationId: this.LocInfo.LocationId,
+  IsOffer: false,
+  AddressId: 0,
+  OrderDate: new Date(),
+};
+
+
   }
   inItCart() {
     this.basePath = env.API;
@@ -76,6 +103,7 @@ Booking = {
     this.SubTotal = 0;
     this.TotalDeliveryCharge = 0;
     const cart = this.authService.getCart();
+    if (cart) {
     if (cart.length > 0) {
         this.ordersToCheckout = cart;
         this.http.get<any>(env.API + 'ShopDetailById/' + this.ordersToCheckout[0].ShopId).subscribe(data => {
@@ -86,6 +114,7 @@ Booking = {
                 }
               });
     }
+  }
   }
 
   calOrder() {
@@ -99,6 +128,7 @@ Booking = {
     this.SubTotal = Math.round(this.SubTotal * 100) / 100;
     this.Total = this.TotalDeliveryCharge + this.SubTotal;
   }
+
   chkPromoCode() {
           if (!this.Booking.Code) {
         this.toastr.error( 'Invalid Code !');
@@ -108,14 +138,18 @@ Booking = {
             if (data) {
                       if (data.Id > 0) {
 
-                          if (this.Total <= data.MaxValue) {
-                            this.toastr.success( 'Offer Applied !');
-                            this.Offer = data;
-                            this.Booking.IsOffer = true;
-                            this.ApplyOffer();
-                          } else {
-                            this.toastr.error( 'To Avail Promo-Discount, Make order Below * ' + data.MaxValue);
-                          }
+                          // if (this.Total <= data.MaxValue) {
+                          //   this.toastr.success( 'Offer Applied !');
+                          //   this.Offer = data;
+                          //   this.Booking.IsOffer = true;
+                          //   this.ApplyOffer();
+                          // } else {
+                          //   this.toastr.error( 'To Avail Promo-Discount, Make order Below * ' + data.MaxValue);
+                          // }
+                          this.toastr.success( 'Offer Applied !');
+                          this.Offer = data;
+                          this.Booking.IsOffer = true;
+                          this.ApplyOffer();
 
                       } else {
                         this.toastr.error( 'Promo code has already been availed');
@@ -149,13 +183,20 @@ Booking = {
 
     this.Total2 = this.SubTotal;
     if (this.Offer.IsPercentage) {
-                    let price = this.SubTotal - (this.SubTotal * this.Offer.Value) / 100;
-                    price = Math.round(price * 100) / 100;
-                    this.SubTotal = price;
-                    this.Total = (this.TotalDeliveryCharge + this.SubTotal) - this.WalletCash;
-                } else {
-                    this.SubTotal = this.SubTotal - this.Offer.Value;
-                    this.Total = (this.TotalDeliveryCharge + this.SubTotal) - this.WalletCash;
+      let offervalue = (this.SubTotal * this.Offer.Value) / 100;
+      if (offervalue > this.Offer.MaxValue) {
+          offervalue = this.Offer.MaxValue;
+      }
+      let price = this.SubTotal - offervalue;
+      price = Math.round(price * 100) / 100;
+      this.SubTotal = price;
+      this.Total = (this.TotalDeliveryCharge + this.SubTotal) - this.WalletCash;
+        } else {
+                  if (this.Offer.Value > this.Offer.MaxValue) {
+                    this.Offer.Value = this.Offer.MaxValue;
+                }
+                  this.SubTotal = this.SubTotal - this.Offer.Value;
+                  this.Total = (this.TotalDeliveryCharge + this.SubTotal) - this.WalletCash;
                 }
   }
 
@@ -173,13 +214,21 @@ Booking = {
 
     this.Total2 = this.SubTotal;
     this.Booking.IsOffer = false;
-    this.Booking.PromoOfferId = 0;
+    this.Booking.PromoOfferId = '';
     this.Booking.Code = '';
 
 }
 
   UseWallet() {
-    this.WalletCash = this.Customer.Points;
+    // this.WalletCash = this.Customer.Points;
+    // this.Total = (this.TotalDeliveryCharge + this.SubTotal) - this.WalletCash;
+    let pts = 0;
+    if (this.Customer.Points >= this.CompanyProfile.WalletLimit) {
+                    pts = this.CompanyProfile.WalletLimit;
+                } else {
+                    pts = this.Customer.Points;
+                }
+    this.WalletCash = pts;
     this.Total = (this.TotalDeliveryCharge + this.SubTotal) - this.WalletCash;
 
   }

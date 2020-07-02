@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Tab1Page } from './tab1.page';
 import { FoodItemsComponent } from '../food-items/food-items.component';
 import { MyCartComponent } from '../my-cart/my-cart.component';
 import { CheckOutComponent } from '../check-out/check-out.component';
+import { ChangeLocationComponent } from '../change-location/change-location.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path: 'check-out',
         component: CheckOutComponent
+      },
+      {
+        path: 'change-location',
+        component: ChangeLocationComponent
       }
     ]
   }

@@ -83,6 +83,7 @@ export class LoginComponent implements OnInit {
 
     this.http.post<any>(env.API + 'Login', this.user).subscribe(data => {
       this.postId = data.CustomerId;
+      console.log('Login Success');
       this.authService.setTokenInfo(data);
       this.router.navigate(['/tabs/tab1']);
   },

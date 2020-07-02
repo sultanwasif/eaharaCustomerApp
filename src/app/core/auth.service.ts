@@ -72,4 +72,21 @@ removeTokenInfo() {
   this.tokenInfo = null;
   this.storage.setItem('EaharaTokenInfo', JSON.stringify(this.tokenInfo));
 }
+
+
+setLocInfo(data) {
+  const locinfo = data;
+  this.storage.setItem('EaharaLocInfo', JSON.stringify(locinfo));
+}
+
+getLocInfo() {
+  const locinfo  = JSON.parse(this.storage.getItem('EaharaLocInfo'));
+  return locinfo;
+}
+
+removeLocInfo() {
+  const locinfo = null;
+  this.storage.setItem('EaharaLocInfo', JSON.stringify(locinfo));
+}
+
 }

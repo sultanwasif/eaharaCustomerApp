@@ -66,7 +66,8 @@ export class FoodItemsComponent implements OnInit {
 
   myCartInit() {
                 const cart = this.authService.getCart();
-                if (cart != null && cart.length > 0) {
+                if (cart) {
+                if ( cart.length > 0) {
                     this.ordersToCheckout = cart;
                     for (const e of this.ordersToCheckout) {
                       if (e) {
@@ -74,6 +75,7 @@ export class FoodItemsComponent implements OnInit {
                       }
                     }
                 }
+              }
   }
 
   onAddClick(item) {

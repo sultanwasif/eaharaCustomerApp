@@ -510,5 +510,22 @@ h5 {
 }
 .mar-t15{
     margin-top:15%!important;
+}  
+.bghight {
+  --width: 60px;
+  height: 100%;
+  vertical-align: middle;
+  //padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.bgwidth {
+  width: 100%;
+  height: 50px;
+  vertical-align: middle;
+  // padding-right: 10px;
+  // padding-bottom: 10px;
+  // padding-top: 10px;
 }
 
