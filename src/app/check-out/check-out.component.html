@@ -3,9 +3,11 @@
     <div class="app-container d-table w-100 h-100">
       <ion-buttons slot="start" *ngIf="ordersToCheckout.length > 0">
         <ion-back-button defaultHref="/tabs/tab1/my-cart" ></ion-back-button>
+        <span class="app-headerLabel">Check Out</span>
       </ion-buttons>
       <ion-buttons slot="start" *ngIf="ordersToCheckout.length <= 0">
         <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+        <span class="app-headerLabel">Check Out</span>
       </ion-buttons>
       <!-- <ion-title>MY Cart</ion-title> -->
       <div class="head-icons d-table-cell align-middle">

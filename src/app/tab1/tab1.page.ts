@@ -41,7 +41,8 @@ export class Tab1Page {
     private toastr: ToastrService,
     private shopsService: AllShopsDataService,
     private authService: AuthService) {
-      this.basePath = env.API;
+      // this.basePath = env.ImgPath;
+      this.basePath = env.ImgPath;
       this.loadData(null);
   }
 

@@ -3,9 +3,12 @@
     <div class="app-container d-table w-100 h-100">
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+        <span class="app-headerLabel">Shop Details</span>
       </ion-buttons>
+      <!-- <div>Shop Details</div> -->
       <div class="head-icons d-table-cell align-middle">
         <!-- <ion-title size="small">Restaurant</ion-title> -->
+        <!-- <span>Shop Details</span> -->
         <div class="app-increment">
           <ion-icon name="notifications-outline" style='margin-right:15px'></ion-icon>
           <ion-icon name="cart-outline" (click)="ViewCart()"></ion-icon>            
@@ -57,8 +60,8 @@
     <ion-item>
       <ion-input placeholder="Search here \ keep blank to show all" [(ngModel)]="userFilter.Name"></ion-input>
       <!-- <ion-button slot="end" color="danger" (click)="onSearch()"><ion-icon name="search-outline"></ion-icon>Search</ion-button> -->
-    </ion-item>  
-      <ng-container>
+    </ion-item>
+  <ng-container>   
         <ion-item-group *ngFor="let Cat of allItems | orderBy:['Priority']">
           <ion-item-divider>
             <ion-label><b>{{Cat?.Name}}</b></ion-label>

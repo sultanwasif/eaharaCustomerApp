@@ -34,7 +34,7 @@ export class MyCartComponent implements OnInit {
   }
 
   inItCart() {
-    this.basePath = env.API;
+    this.basePath = env.ImgPath;
     this.ordersToCheckout = [];
     this.Total = 0;
     this.SubTotal = 0;

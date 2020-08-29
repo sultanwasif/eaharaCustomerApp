@@ -65,7 +65,7 @@ export class SearchGlobalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.basePath = env.API;
+    this.basePath = env.ImgPath;
     const d = new Date();
     const n = d.getMinutes();
     const h = d.getHours();

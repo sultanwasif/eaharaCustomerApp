@@ -12,6 +12,7 @@ import { env } from 'src/environments/environment';
 export class MyOrdersComponent implements OnInit {
   TokenInfo;
   myOrders;
+  basePath;
 
   constructor(
     private http: HttpClient,
@@ -19,6 +20,7 @@ export class MyOrdersComponent implements OnInit {
     private authService: AuthService) { }
 
   ngOnInit() {
+    this.basePath = env.ImgPath;
     this.onMyOrders();
   }
 

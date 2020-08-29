@@ -52,7 +52,7 @@ export class FoodItemsComponent implements OnInit {
      }
 
   ngOnInit() {
-    this.basePath = env.API;
+    this.basePath = env.ImgPath;
     this.selShop = this.authService.selShop;
     if (this.selShop) {
       this.http.get<any>(env.API + 'ShopDetailById/' + this.selShop.Id).subscribe(data => {
