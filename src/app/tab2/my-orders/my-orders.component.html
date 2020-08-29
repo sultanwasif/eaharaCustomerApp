@@ -1,0 +1,62 @@
+<ion-header class="t-header">
+  <ion-toolbar>
+    <div class="app-container d-table w-100 h-100">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
+      </ion-buttons>
+      <div class="head-icons d-table-cell align-middle">
+        <!-- <ion-title size="small">Restaurant</ion-title> -->
+        <div class="app-increment">
+          <ion-icon name="notifications-outline" style='margin-right:15px'></ion-icon>
+          <!-- <ion-icon name="cart-outline" (click)="ViewCart()"></ion-icon>             -->
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ng-container class="offerbg"> 
+<ion-content>
+  <div
+  class="p-2 m-1 flex-fill busroute-item"
+  *ngFor="let s of myOrders"
+>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+      <tr>
+        <td valign="middle" class="b-no">
+          <!-- <ion-thumbnail> -->
+          <!-- <img src="{{basePath}}{{item.Image}}" class="thumbnailImg"/> -->
+          <!-- <img src="{{basePath}}{{item.Image}}"/> -->
+        <!-- </ion-thumbnail> -->
+        </td>
+        <td valign="middle" class="b-devider">
+          <img src="assets/Images/devider.png" alt="" />
+        </td>
+        <td valign="middle" class="b-label">
+          <div>
+            <b> {{s.Shop.Name}}</b>
+          </div>
+          <div class="">
+            {{s.RefNo}} &nbsp; &nbsp; {{s.OrderDate | date:'dd/MM/yyyy'}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td valign="middle" class="b-label" colspan="3">
+                    <span *ngFor="let col of s.BookingDetails">
+                      {{col.Quantity}} X {{col.Item.Name}} ,
+                    </span>
+        </td>               
+      </tr>
+      <tr>
+        <td valign="middle" class="b-label" colspan="3">
+          <div class="">
+            <b>Total : {{s.Total}}</b> rs/- <span style="float:right;"><b>{{s.StatusName}}</b></span>
+          </div>
+        </td>            
+      </tr>
+    </tbody>
+  </table>
+</div>    
+</ion-content>
+</ng-container>

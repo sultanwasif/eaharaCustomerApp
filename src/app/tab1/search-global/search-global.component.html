@@ -1,0 +1,74 @@
+<ion-header class="t-header">
+  <ion-toolbar>
+    <div class="app-container d-table w-100 h-100">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+      </ion-buttons>
+      <div class="brand-logo d-table-cell align-middle">
+        <ion-title color="danger">Search</ion-title>        
+      </div>
+      <div class="head-icons d-table-cell align-middle">
+        <div class="app-increment">
+          <ion-icon name="notifications-outline" style='margin-right:15px'></ion-icon>
+          <ion-icon name="cart-outline" (click)="ViewCart()"></ion-icon>            
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-item >
+  <ion-input placeholder="Search Your Favourite Food" [(ngModel)]="srcKeyword"></ion-input>
+  <ion-button slot="end" color="danger" (click)="onSearch()" class="bghight">Search</ion-button>
+</ion-item>
+<ng-container class="offerbg">  
+  <ion-content>
+    <ion-card (click)="expandItem(i)" *ngFor="let shopgroup of items; let i = index;">
+      <ion-card-header>
+        <ion-item color="danger">
+          <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+          <ion-label> &nbsp; &nbsp; {{shopgroup.shop}}</ion-label>
+        </ion-item>
+      </ion-card-header>        
+  <ion-card-content>
+    <app-exapandable expandHeight="100px" [expanded]="shopgroup.open">
+      <div
+              class="p-2 m-1 flex-fill busroute-item"
+              *ngFor="let item of shopgroup.shopItems"
+            >
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr >
+                    <td valign="middle" class="b-no">
+                      <!-- <ion-thumbnail> -->
+                      <img src="{{basePath}}{{item.Image}}" class="thumbnailImg"/>
+                      <!-- <img src="{{basePath}}{{item.Image}}"/> -->
+                    <!-- </ion-thumbnail> -->
+                    <div *ngIf="item.InActive" class="text-over-img">
+                    <span *ngIf="item.InActive">Not Available</span>
+                   </div>
+                    </td>
+                    <td valign="middle" class="b-devider">
+                      <img src="assets/Images/devider.png" alt="" />
+                    </td>
+                    <td valign="middle" class="b-label">
+                      <div>
+                        <b>{{ item.Name }}</b>
+                      </div>
+                      <div class="">
+                        RS {{item.Price}} /-
+                      </div>
+                    </td>
+                    <td valign="middle" class="b-arrow"  (click)="onAddClick(item)">
+                      <div class="app-increment">
+                            <ion-icon name="add-circle"></ion-icon>
+                        </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+    </app-exapandable>
+  </ion-card-content>
+</ion-card>
+</ion-content>
+</ng-container>

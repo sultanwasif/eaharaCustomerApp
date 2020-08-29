@@ -48,8 +48,9 @@ export class YourAddressComponent implements OnInit {
     this.http.get<any>(env.API + 'AddressbyCusId/' + this.TokenInfo.CustomerId).subscribe(data => {
       this.allAddress = data;
       },
-  err => console.log(err),
-  );
+      err => {
+        this.toastr.error( 'Network Error');
+      });
 
   }
 

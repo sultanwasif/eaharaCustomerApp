@@ -54,7 +54,10 @@
           </font>
         </div>
     </ion-card>
-  
+    <ion-item>
+      <ion-input placeholder="Search here \ keep blank to show all" [(ngModel)]="userFilter.Name"></ion-input>
+      <!-- <ion-button slot="end" color="danger" (click)="onSearch()"><ion-icon name="search-outline"></ion-icon>Search</ion-button> -->
+    </ion-item>  
       <ng-container>
         <ion-item-group *ngFor="let Cat of allItems | orderBy:['Priority']">
           <ion-item-divider>
@@ -62,7 +65,7 @@
           </ion-item-divider>
             <div
               class="p-2 m-1 flex-fill busroute-item"
-              *ngFor="let item of Cat.Items"
+              *ngFor="let item of Cat.Items | filterBy:userFilter"
             >
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tbody>

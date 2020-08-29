@@ -7,9 +7,9 @@ Eahara Customer Application
 Version : 1.0.6
 Changes : Change Pasword, Profile Update and Address Add/Edit/Delete are done.
 Pending : Tab 1 - Search For all Items, search Shops name, search item in one shop are pending.
-                  Selction of address in Checkout, getting current location Pending.
-          Tab 2 - Order Track Feautures are .
-          Tab 3 - Share App Pending ( Referral Screen)
+                  Selection of address in Checkout, getting current location Pending.
+          Tab 2 - Order Track Feautures are Pending.
+          Tab 3 - Share App Feauture Pending (Referral Screen)
 Date    : 02-07-2020
 
 Version : 1.0.5

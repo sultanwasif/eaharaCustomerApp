@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { env } from '../../environments/environment';
 import { AllShopsDataService } from './tab1.service';
 import { AuthService } from '../core/auth.service';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 interface Filter  {
   Preference: boolean;
@@ -22,6 +23,7 @@ interface Filter  {
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  @ViewChild(IonInfiniteScroll, {static: false}) infiniteScroll: IonInfiniteScroll;
   private filter: Filter;
   shops;
   basePath;
@@ -29,6 +31,9 @@ export class Tab1Page {
   CurrentTime;
   LocInfo;
   LocationSelected = false;
+  srcKeyword = '';
+  userFilter: any = { Name: '' };
+  paginationmore = 0;
 
   constructor(
     private router: Router,
@@ -37,13 +42,16 @@ export class Tab1Page {
     private shopsService: AllShopsDataService,
     private authService: AuthService) {
       this.basePath = env.API;
+      this.loadData(null);
   }
 
   ionViewDidEnter() {
-    this.loadData();
+    // this.loadData();
   }
 
-  loadData() {
+  loadData(event) {
+    this.paginationmore = 0;
+    this.srcKeyword = '';
     const d = new Date();
     const n = d.getMinutes();
     const h = d.getHours();
@@ -60,7 +68,7 @@ export class Tab1Page {
       Preference: false,
 Preference2: false,
 Keyword: '',
-Pagenation: 0,
+Pagenation: this.paginationmore,
 ShopsCategories: [],
 ItemCategories: [],
 LocationId: this.LocInfo.Id
@@ -69,6 +77,9 @@ LocationId: this.LocInfo.Id
       this.shops = data;
     });
 
+  }
+    if (event) {
+    event.target.complete();
   }
   }
 
@@ -79,8 +90,46 @@ LocationId: this.LocInfo.Id
   ViewCart() {
     this.router.navigate(['/tabs/tab1/my-cart']);
   }
+  vwSearch() {
+    this.router.navigate(['/tabs/tab1/search-global']);
+  }
   changeLoc() {
     this.router.navigate(['/tabs/tab1/change-location']);
+  }
+  onSearch() {
+    if (this.srcKeyword.length > 0) {
+    this.http.get<any>(env.API + 'ShopsByKeyword/' + this.srcKeyword + '/' + this.LocInfo.Id ).subscribe(data => {
+      this.shops = data;
+      },
+      err => {
+        this.toastr.error( 'Network Error');
+      });
+    } else {
+      this.loadData(null);
+    }
+  }
+
+  doInfinite(event) {
+    this.paginationmore = this.paginationmore + 20;
+    this.filter = {
+      Preference: false,
+Preference2: false,
+Keyword: '',
+Pagenation: this.paginationmore,
+ShopsCategories: [],
+ItemCategories: [],
+LocationId: this.LocInfo.Id
+    };
+    this.http.post<any>(env.API + 'ShopsWithFilter', this.filter).subscribe(data => {
+      if (data.length > 0) {
+        for (const e of data) {
+          this.shops.push(e);
+        }
+        event.target.complete();
+      } else {
+        event.target.disabled = true;
+      }
+    });
   }
 
 }

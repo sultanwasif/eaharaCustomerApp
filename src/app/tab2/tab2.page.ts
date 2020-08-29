@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-tab2',
@@ -7,10 +11,16 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private authService: AuthService) {}
 
   onProfile() {}
-  onWallet() {}
+  onMyOrders() {
+    this.router.navigate(['/tabs/tab2/my-orders']);
+  }
   onRefer() {}
 
 }

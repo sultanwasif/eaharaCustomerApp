@@ -32,6 +32,8 @@ export class FoodItemsComponent implements OnInit {
   SelectedShopId;
   ToCart;
   ordersToCheckout = [];
+  srcKeyword  = '';
+  userFilter: any = { Name: '' };
 
 
   isThere = true;
@@ -69,11 +71,12 @@ export class FoodItemsComponent implements OnInit {
                 if (cart) {
                 if ( cart.length > 0) {
                     this.ordersToCheckout = cart;
-                    for (const e of this.ordersToCheckout) {
-                      if (e) {
-                        this.SelectedShopId = e.ShopId;
-                      }
-                    }
+                    this.SelectedShopId = cart[0].ShopId;
+                    // for (const e of this.ordersToCheckout) {
+                    //   if (e) {
+                    //     this.SelectedShopId = e.ShopId;
+                    //   }
+                    // }
                 }
               }
   }
@@ -124,4 +127,19 @@ ViewCart() {
   this.router.navigate(['/tabs/tab1/my-cart']);
 }
 
+onSearch() {
+  if (this.srcKeyword.length > 0) {
+    this.http.get<any>(env.API + 'ItemsByKeyword/' + this.srcKeyword + '/' + 1 ).subscribe(data => {
+      this.allItems = data;
+      },
+      err => {
+        this.toastr.error( 'Network Error');
+      });
+  } else {
+    this.http.get<any>(env.API + 'getShopItemsForFirstLoad/' + this.selShop.Id).subscribe(data => {
+      this.allItems = data;
+
+    });
+  }
+}
 }

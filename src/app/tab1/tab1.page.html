@@ -1,26 +1,3 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-</ion-content> -->
-<!-- <ion-row>
-  <ion-avatar *ngFor="let offer of offers">
-    <img src="{{basePath}}{{ offer.Image }}" style="max-width:2.5rem;max-height:2.5rem;">
-  </ion-avatar>
-  <h1> {{ offers.length }} </h1>
-</ion-row> -->
 <ion-header class="t-header">
   <ion-toolbar>
     <div class="app-container d-table w-100 h-100">
@@ -28,18 +5,8 @@
         <img src="assets/Images/logo.png" alt="ST Logo" class="logo-img" />
       </div>
       <div class="head-icons d-table-cell align-middle">
-        <!-- <div class="app-icons app-logout">
-          <a class="nav-link" href="">
-            <ion-icon name="notifications-outline"></ion-icon>
-          </a>
-        </div>
-        <div class="app-icons app-logout">
-          <a class="nav-link" href="/tabs/tab1/my-cart">
-            <ion-icon name="cart-outline"></ion-icon>
-          </a>
-        </div> -->
         <div class="app-increment">
-          <a><ion-icon name="search-outline" style='margin-right:15px'></ion-icon></a>
+          <a (click)="vwSearch()"><ion-icon name="search-outline" style='margin-right:15px'></ion-icon></a>
           <a (click)="ViewCart()"><ion-icon name="cart-outline"></ion-icon></a>                             
         </div>
       </div>
@@ -47,7 +14,20 @@
   </ion-toolbar>
 </ion-header>
 <ng-container class="offerbg">  
-<ion-content>
+ <ion-content>  
+  <ion-refresher slot="fixed" (ionRefresh)="loadData($event)" pullMin="80" pullMax="100">
+    <ion-refresher-content 
+      pullingIcon="arrow-down-outline" 
+      pullingText="Pull to refresh" 
+      refreshingSpinner="crescent"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+<ion-item>
+  <ion-label *ngIf="LocationSelected"> <small>Delivering to <b>{{LocInfo.Name}}</b></small></ion-label>
+  <ion-label *ngIf="!LocationSelected"> Select Delivery Location</ion-label>
+  <ion-button expand="full" color="danger" (click)="changeLoc()"> Change</ion-button>
+</ion-item>
 <div class="offerhome" >
 <ion-slides autoplay="3000" [options]="{pagination: true}">
   <ion-slide>
@@ -79,23 +59,15 @@
   </ion-slide>
 </ion-slides>
 </div>
-<ion-item>
-  <ion-label *ngIf="LocationSelected"> Delivering to {{LocInfo.Name}}</ion-label>
-  <ion-label *ngIf="!LocationSelected"> Select Delivery Location</ion-label>
-  <ion-button expand="full" color="danger" (click)="changeLoc()"> Change</ion-button>
+<ion-item *ngIf ="LocationSelected">
+  <ion-icon color="danger" name="search-circle-outline" slot="start"></ion-icon>
+  <ion-input placeholder="Search Shop \ keep blank to show all" [(ngModel)]="userFilter.Name"></ion-input>
+  <!-- <ion-button slot="end" color="danger" (click)="onSearch()"><ion-icon name="search-outline"></ion-icon>Search</ion-button> -->
 </ion-item>
 <div class="app-container p-1 bg-container"> 
-<!-- <ion-list>
-<ion-item *ngFor="let item of shops" class="p-2 m-1 flex-fill busroute-item">
-  <ion-thumbnail slot="start">
-    <img src="{{basePath}}{{item.Image}}" class="thumbnailImg"/>
-  </ion-thumbnail>
-  <ion-label>{{item.Name}}</ion-label>
-</ion-item>
-</ion-list> -->
 <div
             class="p-2 m-1 flex-fill busroute-item"
-            *ngFor="let item of shops"
+            *ngFor="let item of shops | orderBy:'Order' | filterBy:userFilter"
           >
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tbody>
@@ -129,5 +101,9 @@
             </table>
           </div>
 </div>
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
 </ion-content>
 </ng-container>

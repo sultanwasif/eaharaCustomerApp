@@ -10,6 +10,10 @@ import { FoodItemsModule } from '../food-items/food-items.module';
 import { MyCartModule } from '../my-cart/my-cart.module';
 import { CheckOutModule } from '../check-out/check-out.module';
 import { ChangeLocationModule } from '../change-location/change-location.module';
+import { SearchGlobalComponent } from './search-global/search-global.component';
+import { OrderModule } from 'ngx-order-pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { ExapandableComponent } from '../exapandable/exapandable.component';
 
 
 @NgModule({
@@ -23,8 +27,10 @@ import { ChangeLocationModule } from '../change-location/change-location.module'
     MyCartModule,
     CheckOutModule,
     ChangeLocationModule,
+    OrderModule,
+    FilterPipeModule,
     RouterModule.forChild([{ path: '', component: Tab1Page }])
   ],
-  declarations: [Tab1Page]
+  declarations: [Tab1Page, SearchGlobalComponent, ExapandableComponent]
 })
 export class Tab1PageModule {}

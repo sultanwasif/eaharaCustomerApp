@@ -6,6 +6,7 @@ import { FoodItemsComponent } from './food-items.component';
 import { FormsModule } from '@angular/forms';
 import { Device } from '@ionic-native/device/ngx';
 import { OrderModule } from 'ngx-order-pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 @NgModule({
   declarations: [FoodItemsComponent],
@@ -13,7 +14,8 @@ import { OrderModule } from 'ngx-order-pipe';
     IonicModule.forRoot(),
     CommonModule,
     FormsModule,
-    OrderModule
+    OrderModule,
+    FilterPipeModule,
     // AngularFontAwesomeModule
   ],
   providers: [Device]
