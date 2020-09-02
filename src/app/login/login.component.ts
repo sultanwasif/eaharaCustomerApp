@@ -80,14 +80,14 @@ export class LoginComponent implements OnInit {
       UserName: this.email,
       Password: this.password
     };
-
     this.http.post<any>(env.API + 'Login', this.user).subscribe(data => {
       this.postId = data.CustomerId;
       console.log('Login Success');
       this.authService.setTokenInfo(data);
       this.router.navigate(['/tabs/tab1']);
   },
-  err => console.log(err),
+  err => {console.log(err);
+          this.toastr.error(err); },
   );
   }
 

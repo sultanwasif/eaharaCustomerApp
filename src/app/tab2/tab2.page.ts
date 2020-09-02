@@ -17,7 +17,9 @@ export class Tab2Page {
     private toastr: ToastrService,
     private authService: AuthService) {}
 
-  onProfile() {}
+  onTrack() {
+    this.router.navigate(['/tabs/tab2/my-track']);
+  }
   onMyOrders() {
     this.router.navigate(['/tabs/tab2/my-orders']);
   }

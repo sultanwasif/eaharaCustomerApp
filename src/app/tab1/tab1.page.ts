@@ -47,7 +47,10 @@ export class Tab1Page {
   }
 
   ionViewDidEnter() {
-    // this.loadData();
+    if (this.authService.chkLocationChange == true) {
+      this.authService.chkLocationChange = false;
+      this.loadData(null);
+    }
   }
 
   loadData(event) {

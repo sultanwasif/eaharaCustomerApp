@@ -53,3 +53,24 @@ Date    : 01-04-2020
 Important Notes
 Ionic Changes not works on Browser (ionChnage)
 chrome://inspect/#devices
+
+gENERATE KEY: keytool -genkey -v -keystore eahara-key.keystore -alias alias_eahara -keyalg RSA -keysize 2048 -validity 10000
+PASSKEY: HFS@2020
+
+Android Play Store
+
+Deps :
+- ionic cordova plugin add cordova-plugin-app-version
+- ionic cordova plugin add cordova-plugin-app-update
+
+- keytool -v -list -keystore eahara-key.keystore  ( for checking Keystore Details ...)
+
+Step 1
+- sudo ionic cordova build android --configuration staging --release
+
+- sudo ionic cordova build android --prod --release
+- keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+
+- sudo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore eahara-key.keystore E:\MobileApp\EaharaCustomer\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk alias_eahara
+
+- sudo zipalign -v 4 E:\MobileApp\EaharaCustomer\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk  Eahara_V1.apk

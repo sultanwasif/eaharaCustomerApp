@@ -7,6 +7,7 @@ import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { TrackRouteRoutingModule } from './tab2-routing.module';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { MyTrackComponent } from './my-track/my-track.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
     TrackRouteRoutingModule,
     RouterModule.forChild([{ path: '', component: Tab2Page }])
   ],
-  declarations: [Tab2Page, MyOrdersComponent]
+  declarations: [Tab2Page, MyOrdersComponent, MyTrackComponent]
 })
 export class Tab2PageModule {}

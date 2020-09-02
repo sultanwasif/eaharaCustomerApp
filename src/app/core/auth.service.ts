@@ -28,6 +28,7 @@ export class AuthService {
   private isLoggedin: boolean;
   public storage = window.localStorage;
   public selShop;
+  public chkLocationChange = false;
 
   // store the URL so we can redirect after logging in
   redirectUrl: string;
