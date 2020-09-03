@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "344465533277",
+    "firebase_url": "https://eahara-delivery--1548188280650.firebaseio.com",
+    "project_id": "eahara-delivery--1548188280650",
+    "storage_bucket": "eahara-delivery--1548188280650.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344465533277:android:59d5c2ca21a8a72beda0b4",
+        "android_client_info": {
+          "package_name": "com.hfs.eaharacustomer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344465533277-ka3mmdss0f8ebgk515srui91ke7f1mn5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hfs.eaharacustomer",
+            "certificate_hash": "5a6fe5b6017f125d08bd1d23763d657ba486a8ac"
+          }
+        },
+        {
+          "client_id": "344465533277-jgjvhuuc3hrqct99voogd5gc092r7o7a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDadY-XelysgQzPRGyWTvF_yVBVQMg9-vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344465533277-jgjvhuuc3hrqct99voogd5gc092r7o7a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

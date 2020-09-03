@@ -17,6 +17,7 @@ import { LoaderService } from './services/loader.service';
 import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
 import { MyLoaderComponent } from './my-loader/my-loader.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import { FCM } from '@ionic-native/fcm/ngx';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import {NgxSpinnerModule} from 'ngx-spinner';
   providers: [
     StatusBar,
     SplashScreen,
+    FCM,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }

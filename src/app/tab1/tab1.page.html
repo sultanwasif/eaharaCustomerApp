@@ -33,7 +33,7 @@
   <ion-slide>
      <ion-row>
             <ion-col *ngFor=" let item of offers | slice:0:3; let i=index " col-3 style="padding: 3px;">
-                <ion-card style="margin: 0px 0px 0px 0px;    width: calc(100%);">
+                <ion-card style="margin: 0px 0px 0px 0px;    width: calc(100%);" (click)="onOfferClick(item)">
                     <img src="{{basePath}}{{item.Image}}"  />
                 </ion-card>
             </ion-col>
@@ -42,7 +42,7 @@
   <ion-slide>
      <ion-row>
             <ion-col *ngFor=" let item of offers| slice:3:6; let i=index " col-3 style="padding: 3px;">
-                <ion-card style="margin: 0px 0px 0px 0px;    width: calc(100%);">
+                <ion-card style="margin: 0px 0px 0px 0px;    width: calc(100%);" (click)="onOfferClick(item)">
                   <img src="{{basePath}}{{item.Image}}"  />
                 </ion-card>
             </ion-col>
@@ -51,7 +51,7 @@
   <ion-slide>
      <ion-row>
             <ion-col *ngFor=" let item of offers| slice:6:9; let i=index " col-3 style="padding: 3px;">
-                <ion-card style="margin: 0px 0px 0px 0px;    width: calc(100%);">
+                <ion-card style="margin: 0px 0px 0px 0px;    width: calc(100%);" (click)="onOfferClick(item)">
                   <img src="{{basePath}}{{item.Image}}"  />
                 </ion-card>
             </ion-col>

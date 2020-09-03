@@ -3,6 +3,15 @@ Eahara Customer Application
 ( important notes are last to this page)
 
 
+Version : 1.0.7
+Changes : Tab 1 - Search For all Items, search Shops name, search item in one shop are Done
+                  Offer Page redirection done, Firebase Notifications Added.
+          Tab 2 - Order Track, History Order Feautures are Done.
+Pending : Tab 1 - Selection of address in Checkout, getting current location Pending.
+          Tab 2 - Show Driver Contact Details or share whatsapp location pending.
+          Tab 3 - Share App , Rate App Feautures Pending (Referral Screen)
+Features: Payment Gateway, Maps      
+Date    : 04-09-2020
 
 Version : 1.0.6
 Changes : Change Pasword, Profile Update and Address Add/Edit/Delete are done.

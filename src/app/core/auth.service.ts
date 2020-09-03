@@ -90,4 +90,14 @@ removeLocInfo() {
   this.storage.setItem('EaharaLocInfo', JSON.stringify(locinfo));
 }
 
+setFireKeyInfo(data) {
+  const locinfo = data;
+  this.storage.setItem('EaharaFireInfo', JSON.stringify(locinfo));
+}
+
+getFireKeyInfo() {
+  const locinfo  = JSON.parse(this.storage.getItem('EaharaFireInfo'));
+  return locinfo;
+}
+
 }

@@ -91,6 +91,7 @@ LocationId: this.LocInfo.Id
     this.authService.selShop = shop;
     this.router.navigate(['/tabs/tab1/food-items']);
   }
+
   ViewCart() {
     this.router.navigate(['/tabs/tab1/my-cart']);
   }
@@ -99,6 +100,14 @@ LocationId: this.LocInfo.Id
   }
   changeLoc() {
     this.router.navigate(['/tabs/tab1/change-location']);
+  }
+  onOfferClick(shop) {
+    let shopnew: {} = {};
+    shopnew = {
+      Id : shop.ShopId
+    };
+    this.authService.selShop = shopnew;
+    this.router.navigate(['/tabs/tab1/food-items']);
   }
   onSearch() {
     if (this.srcKeyword.length > 0) {
