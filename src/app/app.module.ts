@@ -18,6 +18,11 @@ import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
 import { MyLoaderComponent } from './my-loader/my-loader.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import { FCM } from '@ionic-native/fcm/ngx';
+// geolocation and native-geocoder
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
+
+
 
 
 @NgModule({
@@ -43,6 +48,8 @@ import { FCM } from '@ionic-native/fcm/ngx';
     FCM,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     LoaderService,
+    Geolocation,
+    NativeGeocoder,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

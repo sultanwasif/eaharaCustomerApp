@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { env } from '../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 @Component({
   selector: 'app-check-out',
@@ -23,6 +25,9 @@ export class CheckOutComponent implements OnInit {
   Shop;
   CompanyProfile;
   Booking;
+  latitude: any = 0; // latitude
+  longitude: any = 0; // longitude
+
 // Booking = {
 //     Description: '',
 //     Remarks: '',
@@ -56,16 +61,29 @@ export class CheckOutComponent implements OnInit {
   Offer: any;
   Total2: any;
 
+  options = {
+    timeout: 10000,
+    enableHighAccuracy: true,
+    maximumAge: 3600
+  };
+
+  nativeGeocoderOptions: NativeGeocoderOptions = {
+    useLocale: true,
+    maxResults: 5
+  };
 
   constructor(
     private router: Router,
     private http: HttpClient,
     private authService: AuthService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private geolocation: Geolocation,
+    private nativeGeocoder: NativeGeocoder) { }
 
   ngOnInit() {
     this.TokenInfo = this.authService.getTokenInfo();
     this.LocInfo = this.authService.getLocInfo();
+    this.getCurrentCoordinates();
     this.http.get<any>(env.API + 'CustomerById/' + this.TokenInfo.CustomerId).subscribe(data => {
       this.Customer = data;
       this.inItCart();
@@ -96,7 +114,50 @@ err => console.log(err),
 
 
   }
-  inItCart() {
+
+  // use geolocation to get user's device coordinates
+  getCurrentCoordinates() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.latitude = resp.coords.latitude;
+      this.longitude = resp.coords.longitude;
+      this.getAddress(this.latitude, this.longitude);
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+  }
+
+  getAddress(lat, long){
+    this.nativeGeocoder.reverseGeocode(lat, long, this.nativeGeocoderOptions)
+    .then((res: NativeGeocoderResult[]) => {
+      this.Booking.Address = JSON.stringify(res[0]);
+      this.Booking.Address = this.pretifyAddress(res[0]);
+    })
+    .catch((error: any) => {
+      // JSON.stringify(error)
+      alert('Error getting Address' + error);
+    });
+  }
+
+  // address
+  pretifyAddress(address) {
+    const obj = [];
+    let data = '';
+    for (const key in address) {
+      if (key) {
+        obj.push(address[key]);
+      }
+    }
+    obj.reverse();
+    for (const val in obj) {
+      if (obj[val].length) {
+      data += obj[val] + ', ';
+      }
+    }
+    // return address.slice(0, -2);
+    return data.slice(0, -2);
+  }
+
+    inItCart() {
     this.basePath = env.ImgPath;
     this.ordersToCheckout = [];
     this.Total = 0;
