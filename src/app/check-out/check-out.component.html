@@ -25,7 +25,7 @@
       <ion-item valign="middle">
         <ion-label position="floating">Address<ion-text color="danger">*</ion-text></ion-label>
         <ion-textarea [(ngModel)]="Booking.Address"></ion-textarea>        
-        <ion-button slot="end" color="danger" (click)="RemoveOffer()" class="bghight"><ion-icon name="home-outline"></ion-icon></ion-button>
+        <ion-button slot="end" color="danger" (click)="validateLocationEnable()" class="bghight"><ion-icon name="home-outline"></ion-icon></ion-button>
         </ion-item>
 
       <ion-item>

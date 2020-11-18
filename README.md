@@ -2,6 +2,14 @@
 Eahara Customer Application
 ( important notes are last to this page)
 
+Version : 1.0.8
+Changes : Tab 1 - Checkout Page Get Current Location added.
+                - If Location Disabled redirect to Enable Location settings added.
+          Tab 1 - Home Page if No location select Redirect to Change Location Page added.
+Pending : Tab 2 - Show Driver Contact Details or share whatsapp location pending.
+          Tab 3 - Share App , Rate App Feautures Pending (Referral Screen)
+Features: Payment Gateway, Maps Need to be Added     
+Date    : 19-11-2020
 
 Version : 1.0.7
 Changes : Tab 1 - Search For all Items, search Shops name, search item in one shop are Done
@@ -10,7 +18,7 @@ Changes : Tab 1 - Search For all Items, search Shops name, search item in one sh
 Pending : Tab 1 - Selection of address in Checkout, getting current location Pending.
           Tab 2 - Show Driver Contact Details or share whatsapp location pending.
           Tab 3 - Share App , Rate App Feautures Pending (Referral Screen)
-Features: Payment Gateway, Maps      
+Features: Payment Gateway, Maps Need to be added     
 Date    : 04-09-2020
 
 Version : 1.0.6

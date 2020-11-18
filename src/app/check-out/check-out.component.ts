@@ -6,6 +6,10 @@ import { env } from '../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { Diagnostic } from '@ionic-native/diagnostic/ngx';
+import {
+  AlertController
+} from '@ionic/angular';
 
 @Component({
   selector: 'app-check-out',
@@ -78,12 +82,20 @@ export class CheckOutComponent implements OnInit {
     private authService: AuthService,
     private toastr: ToastrService,
     private geolocation: Geolocation,
-    private nativeGeocoder: NativeGeocoder) { }
+    private nativeGeocoder: NativeGeocoder,
+    private diagnostic: Diagnostic,
+    private alertCtrl: AlertController) { }
+
+  ionViewDidEnter() {
+      if (this.Booking.Address) {
+        this.validateLocationEnable();
+      }
+  }
 
   ngOnInit() {
     this.TokenInfo = this.authService.getTokenInfo();
     this.LocInfo = this.authService.getLocInfo();
-    this.getCurrentCoordinates();
+    // this.validateLocationEnable();
     this.http.get<any>(env.API + 'CustomerById/' + this.TokenInfo.CustomerId).subscribe(data => {
       this.Customer = data;
       this.inItCart();
@@ -92,9 +104,9 @@ export class CheckOutComponent implements OnInit {
   );
     this.http.get<any>(env.API + 'GetCompanyProfile').subscribe(data => {
     this.CompanyProfile = data;
-},
-err => console.log(err),
-);
+    },
+    err => console.log(err),
+    );
     this.Booking = {
   Description: '',
   Remarks: '',
@@ -116,6 +128,43 @@ err => console.log(err),
   }
 
   // use geolocation to get user's device coordinates
+  validateLocationEnable() {
+    this.diagnostic.isLocationEnabled().then((isEnabled) => {
+      if (!isEnabled) {
+          // handle confirmation window code here and then call switchToLocationSettings
+          this.confirmLocationAlert();
+      } else {
+          this.getCurrentCoordinates();
+      }
+    });
+  }
+  async confirmLocationAlert() {
+    const alert = await this.alertCtrl.create({
+      header: `Enable Location ?`,
+      message: `Do you want to enable location for getting current Address ?`,
+      backdropDismiss: false,
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+            // this.isalrertopen = false;
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Yes clicked.......');
+            this.diagnostic.switchToLocationSettings();
+            // this.sleep(300); // Prevent User from Multiple Clicks
+          }
+        }
+      ]
+    });
+    return alert.present();
+
+  }
   getCurrentCoordinates() {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
@@ -126,7 +175,7 @@ err => console.log(err),
      });
   }
 
-  getAddress(lat, long){
+  getAddress(lat, long) {
     this.nativeGeocoder.reverseGeocode(lat, long, this.nativeGeocoderOptions)
     .then((res: NativeGeocoderResult[]) => {
       this.Booking.Address = JSON.stringify(res[0]);
@@ -336,6 +385,8 @@ err => console.log(err),
     this.Booking.Year = this.Booking.OrderDate.getFullYear();
     this.Booking.Hour = this.Booking.OrderDate.getHours();
     this.Booking.Minutes = this.Booking.OrderDate.getMinutes();
+    this.Booking.Lat = this.latitude;
+    this.Booking.Lng = this.longitude;
 
 
     this.http.post<any>(env.API + 'AddBooking', this.Booking).subscribe(data => {

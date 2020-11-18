@@ -21,6 +21,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
 // geolocation and native-geocoder
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
+import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 
 
 
@@ -50,6 +51,7 @@ import { NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
     LoaderService,
     Geolocation,
     NativeGeocoder,
+    Diagnostic,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

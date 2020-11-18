@@ -43,11 +43,16 @@ export class Tab1Page {
     private authService: AuthService) {
       // this.basePath = env.ImgPath;
       this.basePath = env.ImgPath;
-      this.loadData(null);
+      this.LocInfo = this.authService.getLocInfo();
+      if (this.LocInfo) {
+        this.loadData(null);
+      } else {
+        this.changeLoc();
+      }
   }
 
   ionViewDidEnter() {
-    if (this.authService.chkLocationChange == true) {
+    if (this.authService.chkLocationChange === true) {
       this.authService.chkLocationChange = false;
       this.loadData(null);
     }
@@ -61,7 +66,6 @@ export class Tab1Page {
     const h = d.getHours();
     this.CurrentTime = h + '.' + n;
     this.CurrentTime = parseFloat(this.CurrentTime);
-    this.LocInfo = this.authService.getLocInfo();
     if (this.LocInfo) {
       this.LocationSelected = true;
       this.http.get<any>(env.API + 'GetOffersInHome/' + this.LocInfo.Id).subscribe(data => {
